@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Settings";
+}
+
+
+<div class="container">
+    <div class="row">
+        <!-- Left menu -->
+
+        <nav class="col-md-3 text-right" id="leftCol">
+            <div class="sidebar-wrapper">
+                <h2>Gideon</h2>
+                <h3>Klain</h3>
+            </div>
+            <ul class="nav nav-stacked col-border" id="sidebar">
+                <li><a href="#">Messages  <span class="fa fa-envelope-o" aria-hidden="true"></span></a></li>
+                <li><a href="#">Orders  <span class="fa fa-history" aria-hidden="true"></span></a></li>
+                <li><a href="#">Settings  <span class="fa fa-cog" aria-hidden="true"></span></a></li>
+            </ul>
+        </nav>
+
+        <div class="col-md-9">
+            <form class="form-horizontal">
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="fn">First name</label>
+                        <div class="col-md-4">
+                            <input id="fn" name="fn" type="text" placeholder="John" class="form-control input-md" required="">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="ln">Last name</label>
+                        <div class="col-md-4">
+                            <input id="ln" name="ln" type="text" placeholder="Smitt" class="form-control input-md" required="">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="cmpny">Company</label>
+                        <div class="col-md-4">
+                            <input id="cmpny" name="cmpny" type="text" placeholder="Example ltd." class="form-control input-md" required="">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="add1">Street</label>
+                        <div class="col-md-4">
+                            <input id="add1" name="add1" type="text" placeholder="House number, street name" class="form-control input-md" required="">
+
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="city">City</label>
+                        <div class="col-md-4">
+                            <input id="city" name="city" type="text" placeholder="city" class="form-control input-md" required="">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="zip">Zip Code</label>
+                        <div class="col-md-4">
+                            <input id="zip" name="zip" type="text" placeholder="12345" class="form-control input-md" required="">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="ctry">Country</label>
+                        <div class="col-md-4">
+                            <select id="ctry" name="ctry" type="text" placeholder="Country" class="form-control input-md bfh-countries" data-country="UA" required=""></select>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="phone">Phone</label>
+                        <div class="col-md-4">
+                            <input id="phone" name="phone" type="text" class="form-control input-md bfh-phone" data-country="ctry" required="">
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="submit"></label>
+                        <div class="col-md-4">
+                            <button id="submit" name="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+

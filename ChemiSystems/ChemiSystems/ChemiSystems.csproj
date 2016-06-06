@@ -297,6 +297,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\AccountManagment\Messages.cshtml" />
+    <Content Include="Views\AccountManagment\Orders.cshtml" />
+    <Content Include="Views\AccountManagment\Settings.cshtml" />
+    <Content Include="Views\ItemCart\Cart.cshtml" />
+    <Content Include="Views\ItemCart\Checkout.cshtml" />
+    <Content Include="Views\Items\Catalogue.cshtml" />
+    <Content Include="Views\Items\Item.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
