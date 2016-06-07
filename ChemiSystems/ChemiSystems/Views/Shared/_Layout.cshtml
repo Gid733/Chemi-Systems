@@ -37,27 +37,9 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <span class="fa fa-user"></span>
                                 </a>
-                                <div class="dropdown-menu" id="account-dropdown" style="padding: 17px;">
-                                    <p class="text-center hero-unit">Account panel</p>
-                                    <form class="form" id="formLogin" role="form">
-                                        @Html.AntiForgeryToken()
-                                        <div class="input-group input-group-sm">
-                                            <input name="username" id="email" type="text" class="form-control  dropdown-wrapper" placeholder="Email">
-                                            <input name="password" id="password" type="password" class="form-control dropdown-wrapper" placeholder="Password">
-                                            <div class="checkbox">
-                                                <label style="font-size: 14px;"><input type="checkbox" name="rememberMe" id="rememberMe" value="">Remember me</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4 col-xs-4 col-sm-4">
-                                                <button class="btn btn-primary btn-sm" type="submit" id="btnLogin">Login</button>
-                                            </div>
-                                            <div class="col-md-8 col-xs-8 col-sm-8">
-                                                <button class="btn btn-success btn-sm" type="button" id="btnRegister" style="width: 100%">Register</button>
-                                            </div>
-                                        </div>
-                                        <h6 class="text-center" style="margin-bottom: 0px;"><a href="#">Forgot password?</a></h6>
-                                    </form>
+                                <div class="dropdown-menu" id="account-dropdown" name="account-dropdown" style="padding: 17px;">
+                                    
+                                    
                                 </div>
                             </li>
                         </ul>
@@ -99,45 +81,27 @@
     @Scripts.Render("~/bundles/bootstrap")
 
     <!-- Dropdown -->
-    <script>
-    $('.dropdown').on('show.bs.dropdown', function(e) {
-        $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
-    });
-
-    // ADD SLIDEUP ANIMATION TO DROPDOWN //
-    $('.dropdown').on('hide.bs.dropdown', function(e) {
-        $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
-    });
-    </script>
-
-    <script>
+<script>
     $(document).ready(function () {
-        $("#btnLogin").click(function () {
-            var data = {
-                "email": $("#userid").val(),
-                "password": $("#password").val(),
-                "rememberMe": $("#rememberMe").val()
-            };
-            $.ajax({
-                url: "/account/login",
-                type: "POST",
-                data: JSON.stringify(data),
-                dataType: "json",
-                contentType: "application/json",
-                success: function (status) {
-                    $("#message").html(status.Message);
-                    if (status.Success)
-                    {
-                        window.location.href = status.TargetURL;
-                    }
-                },
-                error: function () {
-                    $("#message").html("Error, wrong username/password");
-                }
-            });
+        $('.dropdown').on('show.bs.dropdown', function(e) {
+            $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
         });
+
+        // ADD SLIDEUP ANIMATION TO DROPDOWN //
+        $('.dropdown').on('hide.bs.dropdown', function(e) {
+            $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+        });
+        $.ajax({
+            url: '/Account/Login',
+            contentType: 'application/html',
+            type: 'GET',
+            dataType: 'html'
+        })
+            .success(function (data) {
+                $("#account-dropdown").html(data);
+            });
     });
-    </script>
+</script>
 
 </body>
 
