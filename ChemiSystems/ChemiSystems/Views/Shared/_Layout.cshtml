@@ -83,23 +83,39 @@
     <!-- Dropdown -->
 <script>
     $(document).ready(function () {
-        $('.dropdown').on('show.bs.dropdown', function(e) {
-            $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
-        });
-
-        // ADD SLIDEUP ANIMATION TO DROPDOWN //
-        $('.dropdown').on('hide.bs.dropdown', function(e) {
-            $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
-        });
+        //Login form loading
         $.ajax({
             url: '/Account/Login',
             contentType: 'application/html',
             type: 'GET',
-            dataType: 'html'
-        })
-            .success(function (data) {
+            dataType: 'html',
+            success (data) {
                 $("#account-dropdown").html(data);
-            });
+            }
+        });
+        
+    });
+    function LoginPost() {
+        var msg = $("#LoginForm").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/Account/Login",
+            data: msg,
+            success: function (data) {
+                alert("Success");
+            },
+            error: function (xhr) {
+                alert("Error");
+            }
+        });
+    }
+    $('.dropdown').on('show.bs.dropdown', function (e) {
+        $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+    });
+
+    // ADD SLIDEUP ANIMATION TO DROPDOWN //
+    $('.dropdown').on('hide.bs.dropdown', function (e) {
+        $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
     });
 </script>
 

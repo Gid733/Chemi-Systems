@@ -33,27 +33,26 @@
 </style>
 <h4 class="text-center" style="margin-top: 0px;">Account profile</h4>
         <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
+            <form method="POST" id="LoginForm" action="javascript:void(null);" onsubmit="LoginPost()">
                 @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
                 <div class="input-group input-group-sm">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control  dropdown-wrapper" , placeholder = "Email" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "" })
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control dropdown-wrapper", placeholder = "Password" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "" })
-                   <h5>@Html.CheckBoxFor(m => m.RememberMe) Remember me</h5> 
-                    </div>
+                    @Html.TextBoxFor(m => m.Email, new {@class = "form-control  dropdown-wrapper", placeholder = "Email"})
+                    @Html.ValidationMessageFor(m => m.Email, "", new {@class = ""})
+                    @Html.PasswordFor(m => m.Password, new {@class = "form-control dropdown-wrapper", placeholder = "Password"})
+                    @Html.ValidationMessageFor(m => m.Password, "", new {@class = ""})
+                    <h5>@Html.CheckBoxFor(m => m.RememberMe) Remember me</h5>
+                </div>
                 <div class="row">
                     <div class="col-md-4 col-xs-4 col-sm-4">
                         <button class="btn btn-primary btn-sm" type="submit" id="btnLogin">Login</button>
                     </div>
                     <div class="col-md-8 col-xs-8 col-sm-8">
-                        @Html.ActionLink("Register", "Register", new { id = "btnRegister" }, new { @class = "btn btn-success btn-sm"})
+                        @Html.ActionLink("Register", "Register", new {id = "btnRegister"}, new {@class = "btn btn-success btn-sm"})
                     </div>
                 </div>
                 <h6 class="text-center" style="margin-bottom: 0px;">@Html.ActionLink("Forgot your password?", "ForgotPassword")</h6>
-            }
-        </section>
+            </form>
+</section>
 
 
