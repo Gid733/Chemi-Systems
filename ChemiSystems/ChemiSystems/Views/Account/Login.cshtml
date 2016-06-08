@@ -1,7 +1,7 @@
 ﻿@using ChemiSystems.Models
+@using Microsoft.AspNet.Identity
 @model LoginViewModel
 @{
-    ViewBag.Title = "Log In";
     Layout = null;
 }
 
@@ -26,6 +26,12 @@
         <h6 class="text-center" style="margin-bottom: 0px;"><a href="#">Forgot password?</a></h6>
     </form>
 *@
+@if (Request.IsAuthenticated)
+{
+    @Html.Action("SignedIn");
+}
+else
+{
 <style>
     label {
         font-size: 14px;
@@ -54,5 +60,5 @@
                 <h6 class="text-center" style="margin-bottom: 0px;">@Html.ActionLink("Forgot your password?", "ForgotPassword")</h6>
             </form>
 </section>
-
+}
 
