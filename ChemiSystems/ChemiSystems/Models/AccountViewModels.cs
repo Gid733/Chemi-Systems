@@ -99,7 +99,7 @@ namespace ChemiSystems.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         [Display(Name = "Street")]
-        public string Steet { get; set; }
+        public string Street { get; set; }
 
         [Required]
         [Display(Name = "Phone")]
@@ -139,5 +139,11 @@ namespace ChemiSystems.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class SignedInViewModel
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

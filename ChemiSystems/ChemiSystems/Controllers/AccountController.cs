@@ -150,7 +150,16 @@ namespace ChemiSystems.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName  = model.FirstName,
+                    LastName = model.LastName,
+                    Country = model.Country,
+                    Street = model.Street,
+                    Phone = model.Phone,
+                    ZipCode = model.ZipCode
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
