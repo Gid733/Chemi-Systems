@@ -98,16 +98,32 @@
     function LoginPost() {
         var msg = $("#LoginForm").serialize();
         $.ajax({
-            type: "POST",
-            url: "/Account/Login",
+            type: 'POST',
+            url: '/Account/Login',
             data: msg,
             success: function () {
-                alert("Success");
+                SignedInGet();
             },
             error: function (xhr) {
                 alert("Error");
             }
         });
+    }
+
+    function SignedInGet() {
+        $.ajax({
+            type: "GET",
+            url: '/Account/SignedIn',
+            dataType: 'html',
+            success: function (data) {
+                $("#account-dropdown").html("");
+                $("#account-dropdown").html(data);
+            },
+            error: function() {
+                alert("Error");
+            }
+        });
+
     }
     $('.dropdown').on('show.bs.dropdown', function (e) {
         $(this).find('.dropdown-menu').first().stop(true, true).slideDown();

@@ -404,6 +404,17 @@ namespace ChemiSystems.Controllers
         }
 
         //
+        // Get: /Account/SignedIn
+        public ActionResult SignedIn()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = UserManager.FindById(userId);
+            var firstName = user.FirstName;
+            var lastName = user.LastName;
+            return PartialView("~/Views/Account/_SignedInPartial.cshtml", new SignedInViewModel { FirstName = firstName, LastName = lastName});
+        }
+
+        //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
