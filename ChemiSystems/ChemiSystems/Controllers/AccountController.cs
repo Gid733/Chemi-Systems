@@ -157,7 +157,7 @@ namespace ChemiSystems.Controllers
                     LastName = model.LastName,
                     Country = model.Country,
                     Street = model.Street,
-                    Phone = model.Phone,
+                    PhoneNumber = model.PhoneNumber,
                     ZipCode = model.ZipCode
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
@@ -405,13 +405,11 @@ namespace ChemiSystems.Controllers
 
         //
         // Get: /Account/SignedIn
+        [Authorize]
         public ActionResult SignedIn()
         {
-            var userId = User.Identity.GetUserId();
-            var user = UserManager.FindById(userId);
-            var firstName = user.FirstName;
-            var lastName = user.LastName;
-            return PartialView("~/Views/Account/_SignedInPartial.cshtml", new SignedInViewModel { FirstName = firstName, LastName = lastName});
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            return PartialView("~/Views/Account/_SignedInPartial.cshtml", new SignedInViewModel { FirstName = user.FirstName, LastName = user.LastName});
         }
 
         //

@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        <!-- Left menu -->
+
+        <nav class="col-md-3 text-right" id="leftCol">
+            <div class="sidebar-wrapper">
+                <h2>Gideon</h2>
+                <h3>Klain</h3>
+            </div>
+            <ul class="nav nav-stacked col-border" id="sidebar">
+                <li><a href="#">Messages  <span class="fa fa-envelope-o" aria-hidden="true"></span></a></li>
+                <li><a href="#">Orders  <span class="fa fa-history" aria-hidden="true"></span></a></li>
+                <li><a href="#">Settings  <span class="fa fa-cog" aria-hidden="true"></span></a></li>
+            </ul>
+        </nav>
+
+        <!-- Page content -->
+        <main class="col-md-9">
+            @RenderBody();  
+        </main>
+    </div>
+</div>
