@@ -8,7 +8,7 @@ namespace ChemiSystems.Infrastructure.Entities
     public class Item
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid ItemId { get; set; }
         public string Name { get; set; }
         public string VendorCode { get; set; }
         public string DescriptionMain { get; set; }
@@ -18,7 +18,7 @@ namespace ChemiSystems.Infrastructure.Entities
         public DateTime DateChanged { get; set; }
 
         public ItemImage Image { get; set; }
-        public ItemCategory Category { get; set; }
+        public virtual ItemCategory Category { get; set; }
 
         public Item()
         {

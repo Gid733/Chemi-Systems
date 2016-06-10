@@ -12,7 +12,7 @@ namespace ChemiSystems.Infrastructure.Entities
     {
         [Key]
         [ForeignKey("Item")]
-        public Guid Id { get; set; }
+        public Guid ItemImageId { get; set; }
         public string ImageMain { get; set; }
         public string ImageMolecular { get; set; }
         public string ImageFormula { get; set; }
