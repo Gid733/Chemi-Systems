@@ -16,6 +16,11 @@ namespace ChemiSystems.Infrastructure.Entities
         public DateTime DateAdded { get; set; }
         public DateTime DateChanged { get; set; }
         public string ChangedBy { get; set; }
+
+        public ItemCategory()
+        {
+            DateAdded = DateTime.Now;
+        }
     }
 
     public enum Categories
@@ -27,4 +32,5 @@ namespace ChemiSystems.Infrastructure.Entities
         VinylogousAcids = 4,
         NucleicAcids = 5
     }
+    
 }

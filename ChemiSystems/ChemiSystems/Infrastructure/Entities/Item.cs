@@ -14,8 +14,15 @@ namespace ChemiSystems.Infrastructure.Entities
         public string DescriptionMain { get; set; }
         public string DescriptionSecondary { get; set; }        
         public double Price { get; set; }
+        public DateTime DateAdded { get; set; }
+        public DateTime DateChanged { get; set; }
 
         public ItemImage Image { get; set; }
         public ItemCategory Category { get; set; }
+
+        public Item()
+        {
+            DateAdded = DateTime.Now;
+        }
     }
 }
