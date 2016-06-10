@@ -8,9 +8,10 @@ namespace ChemiSystems.Infrastructure.Entities
 {
     public class Order
     {
-        public int Id { get; set; }
+        [Key]
+        public Guid Id { get; set; }
         public virtual ICollection<Item> Items { get; set; }
         public double FinalPrice { get; set; }
-        public DateTime OrderTime { get; set; }
+        public DateTime OrderDate { get; set; }
     }
 }

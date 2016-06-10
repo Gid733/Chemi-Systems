@@ -11,7 +11,7 @@ namespace ChemiSystems.Infrastructure.Entities
     {
         [Key]
         [ForeignKey("Item")]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string ImageMain { get; set; }
         public string ImageMolecular { get; set; }
         public string ImageFormula { get; set; }

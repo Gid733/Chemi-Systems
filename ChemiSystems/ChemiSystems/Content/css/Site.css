@@ -328,8 +328,23 @@ footer .btn {
     }
     
 
-/* Recompile in bootstrap*/
+/* Footer */
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.page-wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+* html .page-wrapper {
+    height: 100%;
+}
+.page-buffer {
+    height: 50px;
+}
 
 /*
 

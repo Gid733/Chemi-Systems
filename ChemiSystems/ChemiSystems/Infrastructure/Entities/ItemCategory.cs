@@ -11,7 +11,7 @@ namespace ChemiSystems.Infrastructure.Entities
     {
         [Key]
         [ForeignKey("Item")]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public Categories Category { get; set; }
         public DateTime DateAdded { get; set; }
         public DateTime DateChanged { get; set; }
