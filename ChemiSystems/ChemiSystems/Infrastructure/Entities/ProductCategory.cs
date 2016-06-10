@@ -8,21 +8,31 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ChemiSystems.Infrastructure.Entities
 {
-    public class ItemImage
+    public class ProductCategory
     {
         [Key]
-        [ForeignKey("Item")]
-        public Guid ItemImageId { get; set; }
-        public string ImageMain { get; set; }
-        public string ImageMolecular { get; set; }
-        public string ImageFormula { get; set; }
+        [ForeignKey("Product")]
+        public Guid Id { get; set; }
+        public Categories CategoryName { get; set; }
         public DateTime DateAdded { get; set; }
         public DateTime DateChanged { get; set; }
+        public IdentityUser CreatedBy { get; set; }
         public IdentityUser ChangedBy { get; set; }
 
-        public ItemImage()
+        public ProductCategory()
         {
             DateAdded = DateTime.Now;
         }
     }
+
+    public enum Categories
+    {
+        MineralAcids = 0,
+        SulfonicAcids = 1,
+        CarboxylicAcids = 2,
+        HalogenatedAcids = 3,
+        VinylogousAcids = 4,
+        NucleicAcids = 5
+    }
+    
 }

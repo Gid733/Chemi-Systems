@@ -39,7 +39,8 @@
                                 </a>
                                 <div class="dropdown-menu" id="account-dropdown" name="account-dropdown" style="padding: 17px; padding-top: 5px;">
                                     
-                                    
+
+
                                 </div>
                             </li>
                         </ul>
@@ -95,10 +96,10 @@
             success (data) {
                 $("#account-dropdown").html(data);
             }
-        });
-        
+        });      
     });
     function LoginPost() {
+        $('#loading-gif').show();
         var msg = $("#LoginForm").serialize();
         $.ajax({
             type: 'POST',
@@ -108,6 +109,7 @@
                 SignedInGet();
             },
             error: function (xhr) {
+                $('#loading-gif').hide();
                 alert("Error");
             }
         });

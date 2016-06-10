@@ -10,8 +10,8 @@ namespace ChemiSystems.Infrastructure
 {
     public class ChemiContext: ApplicationDbContext
     {
-            public DbSet<Item> Items { get; set; }
-            public DbSet<ItemCategory> ItemCategories { get; set; } 
-            public DbSet<ItemImage> ItemImages { get; set; }        
+            public DbSet<Product> Items { get; set; }
+            public DbSet<ProductCategory> ProductCategories { get; set; } 
+            public DbSet<ProductImage> ProductImages { get; set; }        
     }
 }
