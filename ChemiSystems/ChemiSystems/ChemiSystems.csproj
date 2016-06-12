@@ -207,6 +207,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Infrastructure\Base\BaseDirectoryEntity.cs" />
+    <Compile Include="Infrastructure\Base\BaseEntity.cs" />
     <Compile Include="Infrastructure\ChemiContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountProfileController.cs" />
@@ -219,6 +221,7 @@
     <Compile Include="Infrastructure\Entities\ProductCategory.cs" />
     <Compile Include="Infrastructure\Entities\ProductImage.cs" />
     <Compile Include="Infrastructure\Entities\Order.cs" />
+    <Compile Include="Infrastructure\Entities\ProductInOrder.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Infrastructure\Entities\Product.cs" />
