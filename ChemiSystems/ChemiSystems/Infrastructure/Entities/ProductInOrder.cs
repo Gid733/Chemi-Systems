@@ -9,9 +9,9 @@ namespace ChemiSystems.Infrastructure.Entities
 {
     public class ProductInOrder : Product
     {
-        [Key]
-        [ForeignKey("Order")]
-        public Guid Order { get; set; }
+     //   [Key]
+     //   [ForeignKey("Order")]
+    //    public Guid Order { get; set; }
         public int Quantity { get; set; }
     }
 }

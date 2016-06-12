@@ -8,10 +8,17 @@ using ChemiSystems.Models;
 
 namespace ChemiSystems.Infrastructure
 {
-    public class ChemiContext: ApplicationDbContext
+    public class ChemiContext: DbContext
     {
-            public DbSet<Product> Items { get; set; }
-            public DbSet<ProductCategory> ProductCategories { get; set; } 
-            public DbSet<ProductImage> ProductImages { get; set; }        
+        public ChemiContext()
+            : base("ChemiDb")
+        {
+        }
+
+        public DbSet<Order> Orders  { get; set; }
+        public DbSet<Product> Products { get; set; } 
+        public DbSet<ProductCategory> ProductCategories { get; set; }  
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<ProductInOrder> ProductInOrder { get; set; }
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ChemiSystems.Models;
+using ChemiSystems.Infrastructure.Entities;
 
 namespace ChemiSystems.Controllers
 {
@@ -408,7 +409,8 @@ namespace ChemiSystems.Controllers
         [Authorize]
         public ActionResult SignedIn()
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
+ 
+    var user = UserManager.FindById(User.Identity.GetUserId());
             return PartialView("~/Views/Account/_SignedInPartial.cshtml", new SignedInViewModel { FirstName = user.FirstName, LastName = user.LastName});
         }
 

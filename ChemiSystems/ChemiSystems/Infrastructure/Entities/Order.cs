@@ -10,9 +10,9 @@ namespace ChemiSystems.Infrastructure.Entities
 {
     public class Order : BaseEntity
     {
-        public virtual ICollection<Product> Products { get; set; }
-        public double FinalPrice { get; set; }
-        public DateTime DeliverTo { get; set; }
+        //public virtual ICollection<ProductInOrder> ProductsInOrder { get; set; }
+        public DateTime DeliverToDate { get; set; }
+        public string DeliverToAddress { get; set; }
         public Guid OrderedBy { get; set; }       
     }
 }
