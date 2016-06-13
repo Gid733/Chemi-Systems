@@ -1,4 +1,5 @@
-﻿using ChemiSystems.Infrastructure.Base;
+﻿using System;
+using ChemiSystems.Infrastructure.Base;
 
 namespace ChemiSystems.Infrastructure.Entities
 {
@@ -11,8 +12,11 @@ namespace ChemiSystems.Infrastructure.Entities
         public double Price { get; set; }
         public int Quantity { get; set; }
 
+        public Guid ProductImageId { get; set; }
         public ProductImage ProductImage { get; set; }
+
+        public virtual Guid ProductCategoryId { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
-        
+
     }
 }

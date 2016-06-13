@@ -322,11 +322,12 @@
     <Content Include="Views\Items\Item.cshtml" />
     <Content Include="Views\Account\_SignedInPartial.cshtml" />
     <Content Include="Views\AccountProfile\_ProfileLayout.cshtml" />
+    <Content Include="Views\Catalogue\_CatalogueSidebarPartial.cshtml" />
+    <Content Include="Views\Catalogue\Catalogue.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Views\Catalogue\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -409,8 +409,7 @@ namespace ChemiSystems.Controllers
         [Authorize]
         public ActionResult SignedIn()
         {
- 
-    var user = UserManager.FindById(User.Identity.GetUserId());
+            var user = UserManager.FindById(User.Identity.GetUserId());
             return PartialView("~/Views/Account/_SignedInPartial.cshtml", new SignedInViewModel { FirstName = user.FirstName, LastName = user.LastName});
         }
 

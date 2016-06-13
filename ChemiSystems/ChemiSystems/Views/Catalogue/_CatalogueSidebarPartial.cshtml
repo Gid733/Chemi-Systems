@@ -1,0 +1,11 @@
+﻿@model List<ChemiSystems.Infrastructure.Entities.ProductCategory>
+
+
+<nav class="col-md-3 col-border" id="leftCol">
+    <ul class="nav nav-stacked" id="sidebar">
+        @foreach (var m in Model)
+        {
+            <li><a data-target="#mineral-acids" data-toggle="collapse" href="#" id="@m.Name">@m.Name<span class="fa fa-flask pull-right" aria-hidden="true"></span></a></li>
+        }
+    </ul>
+</nav>

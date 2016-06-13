@@ -14,7 +14,29 @@ namespace ChemiSystems.Controllers
         // GET: Catalogue
         public ActionResult Index()
         {
-            ProductCategory category1 = new ProductCategory
+            var products = db.Products.Include("ProductImage").ToList();
+            return View("Catalogue", products);
+        }
+
+        public ActionResult GetSidebar()
+        {
+            var categories = db.ProductCategories.ToList();
+            return PartialView("~/Views/Catalogue/_CatalogueSidebarPartial.cshtml", categories);
+        }
+
+        public JsonResult CategoryJsonResult (string name)
+        {
+            var jsondata = db.Products
+                .Include("ProductImage")
+                .Include("ProductCategory")
+                .Where(a => a.ProductCategory.Name.Contains(name))
+                .ToList();
+            return Json(jsondata, JsonRequestBehavior.AllowGet);
+        }
+    }
+}
+/*
+ ProductCategory category1 = new ProductCategory
             {
                 Name = "Boric acids"
             };
@@ -166,8 +188,4 @@ namespace ChemiSystems.Controllers
             db.Products.AddRange(new List<Product> { product11, product12, product13, product21, product22, product23 });
             db.SaveChanges();
             var users = db.Products;
-
-            return View();
-        }
-    }
-}
+     */
