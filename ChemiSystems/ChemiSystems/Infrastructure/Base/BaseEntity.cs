@@ -11,9 +11,7 @@ namespace ChemiSystems.Infrastructure.Base
         public Guid Id { get; set; }
         public Guid ChangedBy { get; set; }
         public Guid CreatedBy { get; set; }
-        [Column(TypeName = "datetime2")]
         public DateTime? CreatedDate { get; set; }
-        [Column(TypeName = "datetime2")]
         public DateTime? ChangedDate { get; set; }
 
         public BaseEntity ()
