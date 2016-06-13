@@ -11,9 +11,6 @@ namespace ChemiSystems.Infrastructure.Entities
 {
     public class ProductImage : BaseEntity
     {
-       // [Key]
-        //[ForeignKey("Product")]
-        //public override Guid Id { get; set; }
         public string ImageMain { get; set; }
         public string ImageMolecular { get; set; }
         public string ImageFormula { get; set; }

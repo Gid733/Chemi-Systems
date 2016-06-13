@@ -14,7 +14,8 @@ namespace ChemiSystems.Infrastructure.Entities
         public string DescriptionMain { get; set; }
         public string DescriptionSecondary { get; set; }        
         public double Price { get; set; }
-       // public ProductImage ProductImage { get; set; }
-        //public virtual ProductCategory ProductCategory { get; set; }
+
+        public ProductImage ProductImage { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
     }
 }

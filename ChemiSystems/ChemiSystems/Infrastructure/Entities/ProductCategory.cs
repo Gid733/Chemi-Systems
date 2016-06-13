@@ -7,8 +7,6 @@ namespace ChemiSystems.Infrastructure.Entities
 {
     public class ProductCategory : BaseDirectoryEntity
     {
-        //[Key]
-        //[ForeignKey("Product")]
-        //public override Guid Id { get; set; }
+
     }
 }

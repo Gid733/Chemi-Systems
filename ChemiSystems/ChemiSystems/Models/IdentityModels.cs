@@ -29,7 +29,7 @@ namespace ChemiSystems.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("ChemiDbIdentity", throwIfV1Schema: false)
+            : base("ChemiDb", throwIfV1Schema: false)
         {
         }
 

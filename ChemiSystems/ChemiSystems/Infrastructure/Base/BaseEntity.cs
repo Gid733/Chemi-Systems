@@ -7,7 +7,7 @@ namespace ChemiSystems.Infrastructure.Base
 {
     public class BaseEntity
     {
-        public virtual Guid Id { get; set; }
+        public Guid Id { get; set; }
         public Guid ChangedBy { get; set; }
         public Guid CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
