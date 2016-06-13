@@ -208,7 +208,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ProductAttribute.cs" />
-    <Compile Include="Infrastructure\Base\BaseDirectoryEntity.cs" />
     <Compile Include="Infrastructure\Base\BaseEntity.cs" />
     <Compile Include="Infrastructure\ChemiContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />

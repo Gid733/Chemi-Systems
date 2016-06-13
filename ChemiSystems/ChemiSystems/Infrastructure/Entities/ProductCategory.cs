@@ -1,12 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
 using ChemiSystems.Infrastructure.Base;
 
 namespace ChemiSystems.Infrastructure.Entities
 {
-    public class ProductCategory : BaseDirectoryEntity
+    public class ProductCategory : BaseEntity
     {
-
+        public string Name { get; set; }
+        public ICollection<Product> Products { get; set; } 
     }
 }

@@ -1,17 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ChemiSystems.Infrastructure.Base
 {
     public class BaseEntity
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public Guid ChangedBy { get; set; }
         public Guid CreatedBy { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ChangedDate { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime? CreatedDate { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime? ChangedDate { get; set; }
 
         public BaseEntity ()
         {
