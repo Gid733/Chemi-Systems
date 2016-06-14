@@ -324,6 +324,7 @@
     <Content Include="Views\AccountProfile\_ProfileLayout.cshtml" />
     <Content Include="Views\Catalogue\_CatalogueSidebarPartial.cshtml" />
     <Content Include="Views\Catalogue\Catalogue.cshtml" />
+    <Content Include="Views\Catalogue\_CatalogueProductsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

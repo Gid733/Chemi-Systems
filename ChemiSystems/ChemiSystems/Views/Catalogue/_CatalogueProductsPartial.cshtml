@@ -1,0 +1,24 @@
+﻿@model List<ChemiSystems.Infrastructure.Entities.Product>
+
+
+@foreach (var p in Model)
+{
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>@p.Name</h4>
+            </div>
+            <div class="panel-body panel-image-wrapper">
+                <img src="@Url.Content(p.ProductImage.ImageMain)" class="img-responsive" width="260">
+            </div>
+            <div class="panel-footer text-center row" style="margin-left: 0px; margin-right: 0px;">
+                <div class="col-md-6 panel-footer-wrapper" style="padding-bottom: 15px;">
+                    <h3>@p.Price $/g</h3>
+                </div>
+                <div class="col-md-6 panel-footer-wrapper">
+                    <a class="btn btn-primary btn-large">Buy now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
