@@ -22,7 +22,7 @@
         <section class="col-md-9">
             <div class="row text-center">
                 <div id="catalogue-products">
-                    
+
                 </div>
             </div>
         </section>
@@ -42,17 +42,16 @@
         //////    filterProducts();
         //////});
         $(".current-category").click(function() {
-            filterProducts();
+            var id = $(this).attr('id');
+            filterProducts(id);
         });
     });
 
-    function filterProducts() {
-        var categoryId = $(".current-category").attr("id");
+    function filterProducts(categoryId) {       
         $.ajax({
             url: '/Catalogue/GetProducts',
-            data: categoryId,
-            type: 'POST',
-            dataType: 'application/html',
+            data: {id:categoryId},
+            type: 'GET',
             success: function (data) {
                 $("#catalogue-products").html("");
                 $("#catalogue-products").html(data);

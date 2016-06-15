@@ -1,6 +1,6 @@
-﻿
+﻿@model ChemiSystems.Infrastructure.Entities.Product
 @{
-    ViewBag.Title = "Item";
+    ViewBag.Title = "Product";
 }
 
 <!-- First section -->
@@ -10,24 +10,24 @@
         <div class="col-md-4" id="leftCol">
             <div class="panel panel-default">
                 <div class="panel-heading panel-heading-custom text-center">
-                    <h4>Hydrochloric acid</h4>
+                   т <h4>@Model.Name</h4>
                 </div>
                 <div class="panel-body panel-image-wrapper">
-                    <img src="img/hydrochloric-acid/hydrochloric-acid.jpg" class="img-responsive" width="300">
+                    <img src="@Url.Content(Model.ProductImage.ImageMain)" class="img-responsive" width="300">
                 </div>
             </div>
 
         </div>
-        <div class="col-md-2" id="leftCol" style="padding: 0px;">
+        <div class="col-md-2" style="padding: 0px;">
             <div class="panel-group">
                 <div class="panel panel-default">
                     <div class="panel-heading panel-heading-custom text-center">
                         <h5>Molecular</h5>
                     </div>
-                    <div class="panel-body panel-image-wrapper"><img src="img/hydrochloric-acid/molecular.jpg" class="img-responsive"></div>
+                    <div class="panel-body panel-image-wrapper"><img src="@Url.Content(Model.ProductImage.ImageMolecular)" class="img-responsive"></div>
                 </div>
                 <div class="panel panel-default" style="margin-top: 15px">
-                    <div class="panel-body panel-image-wrapper"><img src="img/hydrochloric-acid/formula.png" class="img-responsive"></div>
+                    <div class="panel-body panel-image-wrapper"><img src="@Url.Content(Model.ProductImage.ImageFormula)" class="img-responsive"></div>
                 </div>
             </div>
         </div>
@@ -36,17 +36,12 @@
             <div class="col-md-6">
                 <div class="panel panel-default" style="margin-bottom: 15px;">
                     <div class="panel-body">
-                        <p><b>Hydrochloric acid</b> is a clear, colourless and pungent solution created by dissolving hydrogen chloride gas in water. It is a by-product of chlorine manufacture, along with sodium hypochlorite and sodium hydroxide.</p>
+                        @Model.DescriptionMain
                     </div>
                 </div>
                 <div class="panel panel-default" style="margin-bottom: 15px;">
                     <div class="panel-body">
-                        <p>Appearance: Liquid</p>
-                        <p>Formula: HCR</p>
-                        <p>Boiling point (degrees Celsius): Not determined</p>
-                        <p>Melting point (degrees Celsius): Not determined</p>
-                        <p>Relative density: Approx. 1.18 20 degrees Celsius</p>
-                        <p>CAS No.: 7647-01-0</p>
+                        @Model.DescriptionSecondary
                     </div>
                 </div>
                 <!-- Price panel -->
@@ -70,7 +65,8 @@
                 </div>
                 <div class="panel panel-default col-md-5 pull-right">
                     <div class="panel-body text-center btn-add-cart">
-                        <button class="btn btn-primary btn-large" type="button" id="btnLogin" class="btn">Add to cart</button>
+                        <button class="btn btn-primary btn-large" type="button" id="btnLogin">Add to cart</button>
+
                     </div>
                 </div>
             </div>
