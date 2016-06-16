@@ -81,10 +81,6 @@
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -216,6 +212,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Helpers\PaginHelpers.cs" />
     <Compile Include="Infrastructure\Base\BaseEntity.cs" />
     <Compile Include="Infrastructure\ChemiContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -231,6 +228,7 @@
     <Compile Include="Infrastructure\Entities\Order.cs" />
     <Compile Include="Infrastructure\Entities\ProductInOrder.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\GetProductsModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Infrastructure\Entities\Product.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -247,6 +245,9 @@
     <Content Include="Content\img\background.jpg" />
     <Content Include="Content\img\bootstrap-formhelpers-googlefonts.png" />
     <Content Include="Content\img\boric-acid.jpg" />
+    <Content Include="Content\img\boric-acid\boric-acid.jpg" />
+    <Content Include="Content\img\boric-acid\formula.jpg" />
+    <Content Include="Content\img\boric-acid\molecular.png" />
     <Content Include="Content\img\checkout-logos\lp.png" />
     <Content Include="Content\img\checkout-logos\mc.png" />
     <Content Include="Content\img\checkout-logos\p24.png" />
@@ -258,7 +259,6 @@
     <Content Include="Content\img\main-icon.png" />
     <Content Include="Content\img\third-section.jpg" />
     <Content Include="Content\img\third-section.png" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -327,7 +327,7 @@
     <Content Include="Views\AccountProfile\Settings.cshtml" />
     <Content Include="Views\ProductCart\Cart.cshtml" />
     <Content Include="Views\ProductCart\Checkout.cshtml" />
-    <Content Include="Views\Product\Product.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Account\_SignedInPartial.cshtml" />
     <Content Include="Views\AccountProfile\_ProfileLayout.cshtml" />
     <Content Include="Views\Catalogue\_CatalogueSidebarPartial.cshtml" />

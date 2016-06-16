@@ -14,15 +14,15 @@ namespace ChemiSystems.Controllers
         // GET: Product
         public ActionResult Index(string vendorCode)
         {
-            var product = db.Products
+            if (vendorCode == null) return null;
+            Product product = db.Products
                 .Include("ProductImage")
-                .FirstOrDefault(a => a.VendorCode == vendorCode);
+                .Include("ProductCategory")
+                .FirstOrDefault(a => a.VendorCode.Equals(vendorCode));            
             ////    from p in db.Products.Include("ProductImage")
             ////              .Where(p => p.VendorCode == vendorCode)
             ////              select p;
-
-
-            return View("Product", product);
+            return View("Index", product);
         }
     }
 }

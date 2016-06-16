@@ -12,12 +12,7 @@ namespace ChemiSystems
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute(
-            name: "Product",
-            url: "Product/{id}",
-            defaults: new { controller = "Product", action = "Index" }
-            );
+           
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
