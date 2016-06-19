@@ -13,6 +13,9 @@
     </div>
 </div>
 <script>
+    //amount buttons
+   
+    //get all products in cart from local storage
     var getCart = function () {
         $('#cart-gif').show();
         var jsonLocalStorageObj = JSON.stringify(localStorage);
@@ -33,6 +36,13 @@
         getCart();
     }
 
+    function productChanged(id, value) {
+        var intValue = parseInt(value);
+        //check for 9999
+        if (value > 999999) value = 9999;
+        store.set(id, value);
+        getCart();
+    }
     $(document).ready(
         getCart()
     );

@@ -30,13 +30,15 @@
 </div>
 
 <script>
+    
+    //load products
     $(document).ready(function () {
         $.ajax({
             url: '/Catalogue/GetProducts',
             type: 'POST',            
-                success: function (data) {
-                    $("#catalogue-products").html(data);
-                }
+            success: function (data) {
+                $("#catalogue-products").html(data);
+            }
         });
         //////$(".current-category").on("click", "a", function (e) {
         //////    filterProducts();

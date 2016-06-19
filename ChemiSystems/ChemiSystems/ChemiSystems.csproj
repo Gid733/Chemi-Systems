@@ -212,7 +212,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Helpers\PaginHelpers.cs" />
     <Compile Include="Infrastructure\Base\BaseEntity.cs" />
     <Compile Include="Infrastructure\ChemiContext.cs" />
@@ -331,7 +330,7 @@
     <Content Include="Views\AccountProfile\Settings.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Catalogue\Product.cshtml" />
     <Content Include="Views\Account\_SignedInPartial.cshtml" />
     <Content Include="Views\AccountProfile\_ProfileLayout.cshtml" />
     <Content Include="Views\Catalogue\_CatalogueSidebarPartial.cshtml" />

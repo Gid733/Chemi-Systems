@@ -25,7 +25,15 @@ namespace ChemiSystems.Controllers
             List<ProductInCartViewModel> productList = new List<ProductInCartViewModel>();
 
             var obj = JObject.Parse(jsonLocalStorageObj);
-            var dict = obj.ToObject<Dictionary<Guid, int>>();
+            Dictionary<Guid, int> dict = new Dictionary<Guid, int>();
+            try
+            {
+                dict = obj.ToObject<Dictionary<Guid, int>>();
+            }
+            catch (JsonReaderException)
+            {
+                return PartialView("Error");
+            }           
             foreach (var d in dict)
             {
                 ProductInCartViewModel productInCart = new ProductInCartViewModel

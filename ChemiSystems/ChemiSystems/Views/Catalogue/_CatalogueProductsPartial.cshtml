@@ -17,7 +17,7 @@
                     <h3>@p.Price $/g</h3>
                 </div>
                 <div class="col-md-6 panel-footer-wrapper">
-                    @Html.ActionLink("Buy now", "Index", "Product", new {vendorCode = p.VendorCode}, new { @class = "btn btn-primary btn-large" })
+                    @Html.ActionLink("Buy now", "Product", "Catalogue", new {vendorCode = p.VendorCode}, new { @class = "btn btn-primary btn-large" })
                 </div>
             </div>
         </div>       

@@ -18,10 +18,10 @@ namespace ChemiSystems.Controllers
             public int TotalPages // всего страниц
                 => (int)Math.Ceiling((decimal)TotalItems / PageSize);
         }
+
     public class CatalogueController : Controller
     {
         ChemiContext db = new ChemiContext();
-
         
         // GET: Catalogue
         public ActionResult Index()
@@ -30,12 +30,14 @@ namespace ChemiSystems.Controllers
             return View("Catalogue");
         }
 
+        //GET: /Catalogue/Sidebar (partial)
         public ActionResult GetSidebar()
         {
             var categories = db.ProductCategories.ToList();
             return PartialView("~/Views/Catalogue/_CatalogueSidebarPartial.cshtml", categories);
         }
 
+        //GET: /Catalogue/Products (partial)
         public ActionResult GetProducts(Guid? id)
         {
             List<Product> products;
@@ -52,6 +54,25 @@ namespace ChemiSystems.Controllers
                 products = db.Products.Include("ProductImage").ToList();
             }
             return PartialView("~/Views/Catalogue/_CatalogueProductsPartial.cshtml", products);
+        }
+
+        //GET: /Catalogue/Product (single product)
+        public ActionResult Product(string vendorCode)
+        {
+            Product product = db.Products
+                .Include("ProductImage")
+                .Include("ProductCategory")
+                .FirstOrDefault(a => a.VendorCode.Equals(vendorCode));
+            if (product == null)
+            {
+                Response.StatusCode = 404;
+                return View("Error");
+            }
+
+            ////    from p in db.Products.Include("ProductImage")
+            ////              .Where(p => p.VendorCode == vendorCode)
+            ////              select p;
+            return View("Product", product);
         }
     }
 }
