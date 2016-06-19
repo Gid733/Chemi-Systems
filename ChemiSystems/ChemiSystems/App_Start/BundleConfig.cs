@@ -26,6 +26,8 @@ namespace ChemiSystems
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/css/bootstrap.min.css",
                       "~/Content/css/site.css"));
+            bundles.Add(new ScriptBundle("~/bundles/storejs").Include(
+                      "~/Scripts/store.min.js"));
         }
     }
 }

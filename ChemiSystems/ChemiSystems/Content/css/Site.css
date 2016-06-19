@@ -346,6 +346,24 @@ html, body {
     height: 50px;
 }
 
+/* Floating alert */
+#floating_alert {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    z-index: 5000 !important;
+    filter: alpha(opacity=90);
+    opacity: 0.9;
+    -webkit-animation: smooth 0.3s ease-in;
+    -moz-animation: smooth 0.3s ease-in;
+    -o-animation: smooth 0.3s ease-in;
+    -ms-animation: smooth 0.3s ease-in;
+    animation: smooth 0.3s ease-in;
+}
+@-webkit-keyframes smooth {
+    0% { opacity: 0;}
+    90% { opacity: 0.9;}
+}
 /*
 
 .btn {

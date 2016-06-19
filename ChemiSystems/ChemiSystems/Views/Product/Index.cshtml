@@ -24,10 +24,12 @@
                     <div class="panel-heading panel-heading-custom text-center">
                         <h5>Molecular</h5>
                     </div>
-                    <div class="panel-body panel-image-wrapper"><img src="@Url.Content(Model.ProductImage.ImageMolecular)" class="img-responsive"></div>
+                    <div class="panel-body panel-image-wrapper"><img src="@Url.Content(Model.ProductImage.ImageMolecular)" class="img-responsive">
+                    </div>
                 </div>
                 <div class="panel panel-default" style="margin-top: 15px">
-                    <div class="panel-body panel-image-wrapper"><img src="@Url.Content(Model.ProductImage.ImageFormula)" class="img-responsive"></div>
+                    <div class="panel-body panel-image-wrapper"><img src="@Url.Content(Model.ProductImage.ImageFormula)" class="img-responsive">
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,16 +70,18 @@
                 </div>
                 <div class="panel panel-default col-md-5 pull-right">
                     <div class="panel-body text-center btn-add-cart">
-                        <button class="btn btn-primary btn-large" type="button" id="btnLogin">Add to cart</button>
+                        <button class="btn btn-primary btn-large" type="button" onclick="addToLocal()">Add to cart</button>
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Alert modal -->    
 </div>
 
 <script>
+    //amount input
     $('.btn-number').click(function (e) {
         e.preventDefault();
 
@@ -120,19 +124,17 @@
 
         name = $(this).attr('name');
         if (valueCurrent >= minValue) {
-            $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+            $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled');
         } else {
             alert('Sorry, the minimum value was reached');
             $(this).val($(this).data('oldValue'));
         }
         if (valueCurrent <= maxValue) {
-            $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+            $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled');
         } else {
             alert('Sorry, the maximum value was reached');
             $(this).val($(this).data('oldValue'));
         }
-
-
     });
     $(".input-number").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .
@@ -149,4 +151,24 @@
             e.preventDefault();
         }
     });
+
+    //add product to localstorage
+    function addToLocal() {
+        store.set('@Model.Id', parseInt($("#quantity-input").val()));
+        bootstrap_alert.warning('The product is successfully added to the cart', 'success', 3000);
+    }
+
+    //modal 
+
+    bootstrap_alert = function () { }
+    bootstrap_alert.warning = function (message, alert, timeout) {
+        $('<div id="floating_alert" class="alert alert-' + alert + ' fade in"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + message + '&nbsp;&nbsp;</div>').appendTo('body');
+
+
+        setTimeout(function () {
+            $(".alert").alert('close');
+        }, timeout);
+
+    }
+
 </script>

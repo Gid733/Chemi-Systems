@@ -9,6 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/storejs")
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 </head>
 
@@ -33,7 +34,7 @@
                             <li><a href="#">Store</a></li>
                             <li><a href="#">About us</a></li>
                             <li>
-                                <a href="#" class="fa fa-shopping-bag"><span class="badge badge-success">2</span></a>
+                                <a href="#" class="fa fa-shopping-cart"><span id="cart-amount" class="badge badge-success"></span></a>
                             </li>
                             <li class="dropdown" id="menuLogin">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -97,7 +98,15 @@
             success (data) {
                 $("#account-dropdown").html(data);
             }
-        });      
+        });
+
+        //item amount in cart
+        var amount = localStorage.length;
+        if (amount > 0)
+            document.getElementById("cart-amount").innerHTML = amount;
+        else
+            $("cart-amount").hide();
+
     });
     function LoginPost() {
         $('#loading-gif').show();

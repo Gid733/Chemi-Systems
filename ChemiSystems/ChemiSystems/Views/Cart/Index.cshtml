@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+}
+
+<!-- First section -->
+<div class="container">
+    <div id="cart-gif" style="display: none; padding-top: 70px;" class="text-center">
+        <img src="~/Content/img/cart-gif.gif" />
+    </div>
+    <div id="cart">
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#cart-gif').show();
+        var jsonLocalStorageObj = JSON.stringify(localStorage);
+            $.ajax({
+                url: "/Cart/GetCart",
+                type: "POST",
+                data: { jsonLocalStorageObj: jsonLocalStorageObj },
+                success: function (result) {
+                    $('#cart-gif').hide();
+                    $("#cart").html(result);
+                }
+            });
+        }
+    )
+</script>
