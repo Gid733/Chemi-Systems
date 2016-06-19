@@ -21,7 +21,7 @@
             <h5>Cart</h5>
         </div>
 
-
+        @{ double fullprice = 0;}
         @foreach (var m in Model)
         {
             <section class="panel-body">
@@ -33,7 +33,7 @@
                             </div>
                             <div class="col-md-10">
                                 <h3 style="margin-bottom: 2px;">
-                                    @Html.ActionLink(m.Product.Name, "Index", "Product", new { vendorCode = m.Product.VendorCode }, null)
+                                    @Html.ActionLink(m.Product.Name, "Index", "Product", new {vendorCode = m.Product.VendorCode}, null)
                                 </h3>
                                 <h6 style="margin: 0px;">#@m.Product.VendorCode</h6>
                                 <p>@m.Product.DescriptionMain</p>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-md-2 cart-wrapper">
                         <h3 class="text-center">
-                            <div id="product-price">@m.Product.Price</div> $/g
+                            <div id="product-price" value="@m.Product.Price">@m.Product.Price</div> $/g
                         </h3>
                     </div>
                     <div class="col-md-2 cart-wrapper">
@@ -59,15 +59,18 @@
                                 </button>
                             </span>
                         </div>
-                        <button type="button" class="btn btn-danger btn-xs" style="margin-left: 10px;"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-danger btn-xs" style="margin-left: 10px;" onclick="deleteProduct('@m.Product.Id')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                     </div>
                     <div class="col-md-2 cart-wrapper">
                         <h3 class="text-center">
-                            <div id="subtotal-price"></div> $
+                            @(m.Product.Price*m.Amount) $
                         </h3>
                     </div>
                 </div>
             </section>
+            {
+                fullprice += m.Product.Price*m.Amount;
+            }
         }
     </div>
     <section class="row">
@@ -79,7 +82,8 @@
                             <h3 class="text-center">Total:</h3>
                         </div>
                         <div class="col-md-6">
-                            <h3 class="text-center">5 $</h3>
+                            <h3 class="text-center">
+                                @fullprice $</h3>
                         </div>
                     </div>
                 </div>
@@ -97,9 +101,3 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-            var subtotalPrice = parseInt($("#quantity-input").val()) * parseInt($("#product-price").val());
-            document.getElementById("#subtotal-price").innerHTML = subtotalPrice;                  
-    })
-</script>

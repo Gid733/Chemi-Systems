@@ -13,18 +13,29 @@
     </div>
 </div>
 <script>
-    $(document).ready(function () {
+    var getCart = function () {
         $('#cart-gif').show();
         var jsonLocalStorageObj = JSON.stringify(localStorage);
-            $.ajax({
-                url: "/Cart/GetCart",
-                type: "POST",
-                data: { jsonLocalStorageObj: jsonLocalStorageObj },
-                success: function (result) {
-                    $('#cart-gif').hide();
-                    $("#cart").html(result);
-                }
-            });
-        }
-    )
+        $.ajax({
+            url: "/Cart/GetCart",
+            type: "POST",
+            data: { jsonLocalStorageObj: jsonLocalStorageObj },
+            success: function (result) {
+                $('#cart-gif').hide();
+                $("#cart").html(result);
+            }
+        });
+    }
+
+    //delete product from localstorage and call ajax again
+    function deleteProduct(id) {
+        store.remove(id);
+        getCart();
+    }
+
+    $(document).ready(
+        getCart()
+    );
+
+
 </script>
