@@ -39,8 +39,8 @@
     function productChanged(id, value) {
         var intValue = parseInt(value);
         //check for 9999
-        if (value > 999999) value = 9999;
-        store.set(id, value);
+        if (intValue > 999999) intValue = 999999;
+        store.set(id, intValue);
         getCart();
     }
     $(document).ready(

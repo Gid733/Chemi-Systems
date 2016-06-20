@@ -33,7 +33,7 @@
                             </div>
                             <div class="col-md-10">
                                 <h3 style="margin-bottom: 2px;">
-                                    @Html.ActionLink(m.Product.Name, "Index", "Product", new {vendorCode = m.Product.VendorCode}, null)
+                                    @Html.ActionLink(m.Product.Name, "Product", "Catalogue", new {vendorCode = m.Product.VendorCode}, null)
                                 </h3>
                                 <h6 style="margin: 0px;">#@m.Product.VendorCode</h6>
                                 <p>@m.Product.DescriptionMain</p>

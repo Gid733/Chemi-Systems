@@ -17,13 +17,11 @@ namespace ChemiSystems.Controllers
         // GET: Cart       
         public ActionResult Index()
         {           
-            return View();
+            return View("Cart");
         }
 
         public ActionResult GetCart(string jsonLocalStorageObj)
         {
-            List<ProductInCartViewModel> productList = new List<ProductInCartViewModel>();
-
             var obj = JObject.Parse(jsonLocalStorageObj);
             Dictionary<Guid, int> dict = new Dictionary<Guid, int>();
             try
@@ -33,20 +31,18 @@ namespace ChemiSystems.Controllers
             catch (JsonReaderException)
             {
                 return PartialView("Error");
-            }           
-            foreach (var d in dict)
-            {
-                ProductInCartViewModel productInCart = new ProductInCartViewModel
-                {
-                    Product = db.Products
-                        .Include("ProductImage")
-                        .Include("ProductCategory")
-                        .FirstOrDefault(a => a.Id == d.Key),
-                    Amount = d.Value
-                };
-                productList.Add(productInCart);
             }
+
+            //Creating product list from base by Id
+            List<ProductInCartViewModel> productList = dict.Select(d => new ProductInCartViewModel
+            {
+                Product = db.Products.Include("ProductImage").Include("ProductCategory").FirstOrDefault(a => a.Id == d.Key), Amount = d.Value
+            }).ToList();
             if (jsonLocalStorageObj == null) throw new ArgumentNullException(nameof(jsonLocalStorageObj));
+
+            //Check if list empty
+            if (!productList.Any())
+                return PartialView("_EmptyCartPartial");
              
             return PartialView("_ProductsInCartPartial", productList);
         }

@@ -328,7 +328,7 @@
     <Content Include="Views\AccountProfile\Messages.cshtml" />
     <Content Include="Views\AccountProfile\Orders.cshtml" />
     <Content Include="Views\AccountProfile\Settings.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Catalogue\Product.cshtml" />
     <Content Include="Views\Account\_SignedInPartial.cshtml" />
@@ -337,6 +337,7 @@
     <Content Include="Views\Catalogue\Catalogue.cshtml" />
     <Content Include="Views\Catalogue\_CatalogueProductsPartial.cshtml" />
     <Content Include="Views\Cart\_ProductsInCartPartial.cshtml" />
+    <Content Include="Views\Cart\_EmptyCartPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
