@@ -1,0 +1,174 @@
+﻿@model ChemiSystems.Infrastructure.Entities.Order
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .btn .btn-default {
+        color: white;
+    }
+</style>
+
+<!-- First section -->
+<div class="container">
+    <div class="row" style="padding-top: 20px;">
+        <!-- Tabs -->
+        <div class="panel panel-default" style="margin-bottom: 0px;">
+            <div class="row">
+                <nav class="panel-heading panel-heading-custom text-center col-md-12">
+                    <div class="row" style="margin-bottom: 10px !important;">
+                        <h4>Order id: 7759123341</h4>
+                    </div>
+
+                    <ul class="nav nav-tabs">
+                        <li class="active col-md-6">
+                            <a href="#tab1" data-toggle="tab">
+                                <img src="/Content/img/checkout-logos/vs.png" class="img-responsive center-block" width="100">
+                            </a>
+                        </li>
+                        <li class="col-md-6">
+                            <a href="#tab2" data-toggle="tab">
+                                <img src="/Content/img/checkout-logos/p24.png" class="img-responsive center-block" width="100">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="tab-content">
+                <section class="tab-pane active" id="tab1">
+                    <div class="panel-body">
+                        <div class="row">
+                            <form role="form" id="payment-form" method="POST" action="javascript:void(0);">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="couponCode">FIRST NAME</label>
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="couponCode">LAST NAME</label>
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="couponCode">POSTAL CODE</label>
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="display:none;">
+                                        <div class="col-xs-12">
+                                            <p class="payment-errors"></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- Card data -->
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="cardNumber">CARD NUMBER</label>
+                                                <div class="input-group">
+                                                    <input type="tel" class="form-control" name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required autofocus />
+                                                    <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-7 col-md-7">
+                                            <div class="form-group">
+                                                <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                                <input type="tel" class="form-control" name="cardExpiry" placeholder="MM / YY" autocomplete="cc-exp" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-5 col-md-5 pull-right">
+                                            <div class="form-group">
+                                                <label for="cardCVC">CV CODE</label>
+                                                <input type="tel" class="form-control" name="cardCVC" placeholder="CV2" autocomplete="cc-csc" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="couponCode">COUPON CODE</label>
+                                                <input type="text" class="form-control" name="couponCode" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="display:none;">
+                                        <div class="col-xs-12">
+                                            <p class="payment-errors"></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+                <section class="tab-pane" id="tab2">
+                    <div class="panel-body">
+                        <div class="row">
+                            <form role="form" id="payment-form" method="POST" action="javascript:void(0);">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="couponCode">PHONE NUMBER</label>
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="display:none;">
+                                        <div class="col-xs-12">
+                                            <p class="payment-errors"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="couponCode">VALUE</label>
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="display:none;">
+                                        <div class="col-xs-12">
+                                            <p class="payment-errors"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 pull-right">
+                <div class="panel panel-default" style="border-top: none;">
+                    <div class="panel-body text-center">
+                        <button class="btn btn-primary btn-large" type="button" id="btnLogin" class="btn">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

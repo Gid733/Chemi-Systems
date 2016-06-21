@@ -94,7 +94,7 @@
         <div class="col-md-2 pull-right">
             <div class="panel panel-default" style="border-top: none;">
                 <div class="panel-body text-center">
-                    <button class="btn btn-primary btn-large" type="button" id="btnLogin" class="btn">Checkout</button>
+                    <button class="btn btn-primary btn-large" type="button" id="btnCheckout" onclick="proceedToCheckout()">Checkout</button>
                 </div>
             </div>
         </div>
@@ -102,6 +102,7 @@
 </div>
 
 <script>
+    //Input check
     $('.btn-number').click(function (e) {
         e.preventDefault();
 
@@ -171,4 +172,16 @@
             e.preventDefault();
         }
     });
+
+    function proceedToCheckout() {
+        var jsonLocalStorageObj = JSON.stringify(localStorage);        
+        $.ajax({
+            url: "/Order/Index",
+            type: "POST",
+            data: { jsonLocalStorageObj: jsonLocalStorageObj },
+            success: function() {
+                window.location.href = '/Order/Index';
+            }
+        });
+    }
 </script>

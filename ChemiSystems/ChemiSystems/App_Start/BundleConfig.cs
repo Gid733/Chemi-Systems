@@ -23,7 +23,7 @@ namespace ChemiSystems
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Contents/css").Include(
                       "~/Content/css/bootstrap.min.css",
                       "~/Content/css/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/storejs").Include(

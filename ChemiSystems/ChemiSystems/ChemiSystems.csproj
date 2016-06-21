@@ -212,7 +212,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Helpers\PaginHelpers.cs" />
+    <Compile Include="Helpers\StorageHelper.cs" />
     <Compile Include="Infrastructure\Base\BaseEntity.cs" />
     <Compile Include="Infrastructure\ChemiContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -227,6 +229,16 @@
     <Compile Include="Infrastructure\Entities\ProductImage.cs" />
     <Compile Include="Infrastructure\Entities\Order.cs" />
     <Compile Include="Infrastructure\Entities\ProductInOrder.cs" />
+    <Compile Include="Infrastructure\OrderStatus.cs" />
+    <Compile Include="Migrations\201606151938419_InitialCreate.cs" />
+    <Compile Include="Migrations\201606151938419_InitialCreate.Designer.cs">
+      <DependentUpon>201606151938419_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606211901057_Order.cs" />
+    <Compile Include="Migrations\201606211901057_Order.Designer.cs">
+      <DependentUpon>201606211901057_Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GetProductsModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -275,6 +287,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\ChemiSystems.pubxml" />
     <None Include="Properties\PublishProfiles\ChemiTest.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -338,10 +351,10 @@
     <Content Include="Views\Catalogue\_CatalogueProductsPartial.cshtml" />
     <Content Include="Views\Cart\_ProductsInCartPartial.cshtml" />
     <Content Include="Views\Cart\_EmptyCartPartial.cshtml" />
+    <Content Include="Views\Order\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -350,6 +363,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201606151938419_InitialCreate.resx">
+      <DependentUpon>201606151938419_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606211901057_Order.resx">
+      <DependentUpon>201606211901057_Order.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

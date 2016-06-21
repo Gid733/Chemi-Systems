@@ -72,7 +72,7 @@ a {
 
 .first-section {
     min-height: 390px !important;
-    background: url("../img/background.jpg");
+    background: url("/Content/img/background.jpg");
     background-attachment: fixed;
     -ms-background-size: cover;
     background-size: cover;
@@ -101,7 +101,7 @@ a {
 */
 
 .third-section {
-    background: url("../img/third-section.png");
+    background: url("/Content/img/third-section.png");
     background-attachment: fixed;
     -ms-background-size: cover;
     background-size: cover;

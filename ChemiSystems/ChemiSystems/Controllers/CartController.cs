@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ChemiSystems.Helpers;
 using ChemiSystems.Infrastructure.Entities;
 using ChemiSystems.Infrastructure;
 using ChemiSystems.Models;
@@ -22,29 +23,19 @@ namespace ChemiSystems.Controllers
 
         public ActionResult GetCart(string jsonLocalStorageObj)
         {
-            var obj = JObject.Parse(jsonLocalStorageObj);
-            Dictionary<Guid, int> dict = new Dictionary<Guid, int>();
-            try
-            {
-                dict = obj.ToObject<Dictionary<Guid, int>>();
-            }
-            catch (JsonReaderException)
+            var products = StorageHelper.GetProductsLocal(jsonLocalStorageObj, db);
+            if (products == null)
             {
                 return PartialView("Error");
             }
-
-            //Creating product list from base by Id
-            List<ProductInCartViewModel> productList = dict.Select(d => new ProductInCartViewModel
-            {
-                Product = db.Products.Include("ProductImage").Include("ProductCategory").FirstOrDefault(a => a.Id == d.Key), Amount = d.Value
-            }).ToList();
-            if (jsonLocalStorageObj == null) throw new ArgumentNullException(nameof(jsonLocalStorageObj));
-
+            
             //Check if list empty
-            if (!productList.Any())
+            if (!products.Any())
                 return PartialView("_EmptyCartPartial");
              
-            return PartialView("_ProductsInCartPartial", productList);
+            return PartialView("_ProductsInCartPartial", products);
         }
+
+        //get products from localstorage
     }
 }
