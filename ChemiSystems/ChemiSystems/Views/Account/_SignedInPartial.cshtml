@@ -9,7 +9,7 @@
             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
             {
             @Html.AntiForgeryToken()
-                <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-warning btn-sm pull-right">Log out</a>
+                <a href="javascript:document.getElementByid('logoutForm').submit()" class="btn btn-warning btn-sm pull-right">Log out</a>
             }
         </div>
     </div>

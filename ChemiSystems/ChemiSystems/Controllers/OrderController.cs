@@ -15,41 +15,44 @@ namespace ChemiSystems.Controllers
         ChemiContext db = new ChemiContext();
 
         // GET: Order
-        public ActionResult Index(string jsonLocalStorageObj)
+        public ActionResult Index(Guid? id)
+        {
+            var order = db.Orders.FirstOrDefault(a => a.Id.Equals(id));
+            if (order == null)
+            {
+                return View("Error");
+            }
+
+            return View("Checkout", order);
+        }
+
+        public Guid? GetOrder(string jsonLocalStorageObj)
         {
             var products = StorageHelper.GetProductsLocal(jsonLocalStorageObj, db);
 
             if (products == null)
             {
-                return PartialView("Error");
+                return null;
             }
 
-            List<ProductInOrder> productsInOrder = new List<ProductInOrder>();
-            
-            foreach (var p in products)
+            List<ProductInOrder> productsInOrder = products.Select(p => new ProductInOrder()
             {
-                ProductInOrder productInOrder = new ProductInOrder()
-                {
-                    Id = new Guid(),
-                    Name = p.Product.Name,
-                    VendorCode = p.Product.VendorCode,
-                    DescriptionMain = p.Product.DescriptionMain,
-                    DescriptionSecondary = p.Product.DescriptionSecondary,
-                    Price = p.Product.Price,
-                    Amount = p.Amount,
-                    ProductImageId = p.Product.ProductImageId,
-                    ProductImage = p.Product.ProductImage,
-                    ProductCategoryId = p.Product.ProductCategoryId,
-                    ProductCategory = p.Product.ProductCategory,
-                    ChangedBy = p.Product.ChangedBy,
-                    CreatedBy = p.Product.CreatedBy,
-                    CreatedDate = p.Product.CreatedDate,
-                    ChangedDate = p.Product.ChangedDate,
-                };
-                
-
-                productsInOrder.Add(productInOrder);
-            }
+                Id = new Guid(),
+                Name = p.Product.Name,
+                VendorCode = p.Product.VendorCode,
+                DescriptionMain = p.Product.DescriptionMain,
+                DescriptionSecondary = p.Product.DescriptionSecondary,
+                Price = p.Product.Price,
+                Amount = p.Amount,
+                ProductImageId = p.Product.ProductImageId,
+                ProductImage = p.Product.ProductImage,
+                ProductCategoryId = p.Product.ProductCategoryId,
+                ProductCategory = p.Product.ProductCategory,
+                ChangedBy = p.Product.ChangedBy,
+                CreatedBy = p.Product.CreatedBy,
+                CreatedDate = p.Product.CreatedDate,
+                ChangedDate = p.Product.ChangedDate,
+            }).ToList();
 
             Order order = new Order()
             {
@@ -58,8 +61,8 @@ namespace ChemiSystems.Controllers
 
             db.Orders.Add(order);
             db.SaveChanges();
-            
-            return View("Checkout");
+
+            return order.Id;
         }
     }
 }
