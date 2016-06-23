@@ -179,7 +179,8 @@
             url: "/Order/GetOrder",
             type: "POST",
             data: { jsonLocalStorageObj: jsonLocalStorageObj },
-            success: function(result) {
+            success: function (result) {
+                store.clear();
                 window.location.href = "/Order/Index?id=" + result;
             }
         });

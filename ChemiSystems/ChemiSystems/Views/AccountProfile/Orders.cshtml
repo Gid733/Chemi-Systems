@@ -74,7 +74,7 @@
                     {
                         <div class="panel panel-default">
                             <div class="row account-wrapper">
-                                <button id="submit" name="submit" class="btn btn-danger btn-sm btn-account-trash" style="">
+                                <button id="submit" name="submit" onclick="location.href='@Url.Action("DeleteOrder", new { orderId = @o.Id })'" class="btn btn-danger btn-sm btn-account-trash" style="">                                   
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 </button>
                                 <div class="col-md-3">

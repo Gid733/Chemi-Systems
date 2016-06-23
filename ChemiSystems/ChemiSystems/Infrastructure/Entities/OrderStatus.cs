@@ -15,8 +15,8 @@ namespace ChemiSystems.Infrastructure.Entities
 
         public OrderStatus()
         {
-            Status = "Waiting for payment";
-            StatusColor = "btn btn-warning";
+            Status = "Archived";
+            StatusColor = "btn btn-success";
             StatusIcon = "fa fa-credit-card";
         }
     }

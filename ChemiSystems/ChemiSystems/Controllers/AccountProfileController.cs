@@ -16,14 +16,38 @@ namespace ChemiSystems.Controllers
         [Authorize]
         public ActionResult Orders()
         {
+            //get current user and get his orders from db
             var currentUser = User.Identity.GetUserId();
             var userOrders = db.Orders
                 .Include("ProductsInOrder")
                 .Include("ProductsInOrder.ProductImage")
                 .Include("OrderStatus")               
-                .Where(a => a.OrderedBy == currentUser).ToList();
+                .Where(a => a.OrderedBy == currentUser && !a.OrderStatus.Status.Equals("Deleted")).ToList();
 
             return View(userOrders);
+        }
+
+        //POST: /AccountProfile/DeleteOrder
+        [Authorize]
+        public ActionResult DeleteOrder (Guid orderId)
+        {
+            //select all orders with current order id and status Archived
+            var currentOrder = db.Orders
+                .Include("OrderStatus")
+                .FirstOrDefault(a => a.Id == orderId && a.OrderStatus.Status.Equals("Archived"));
+            var currentUser = User.Identity.GetUserId();
+
+            //if anything in current order and order id== user id - allow delete
+            if (currentOrder != null && currentOrder.OrderedBy.Equals(currentUser))
+            {
+                currentOrder.OrderStatus.Status = "Deleted";
+                db.SaveChanges();
+            }
+            else
+            {
+                return View("Error");
+            }
+            return RedirectToAction("Orders");
         }
 
         // GET: AccountProfile/Messages/
