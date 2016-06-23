@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ChemiSystems.Infrastructure.Entities.Order>
 @{
     ViewBag.Title = "Orders";
     Layout = "_ProfileLayout.cshtml";
@@ -19,64 +19,39 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="row account-wrapper">
-                        <div class="col-md-3">
-                            <div class="col-md-6">
-                                <div class="panel-body" style="margin: 0px; padding: 0px; margin-top: 10px">
-                                    <img src="img/boric-acid.jpg" class="img-responsive" width="100">
+                @foreach (var o in Model)
+                {
+                    if (!o.OrderStatus.Status.Equals("Archived"))
+                    {
+                        <div class="panel panel-default">
+                            <div class="row account-wrapper">
+                                <div class="col-md-3">
+                                    @foreach (var p in o.ProductsInOrder)
+                                    {
+                                        <div class="col-md-6">
+                                            <div class="panel-body" style="margin: 0px; padding: 0px; margin-top: 10px">
+                                                <img src="@Url.Content(p.ProductImage.ImageMain)" class="img-responsive" width="100">
+                                            </div>
+                                        </div>
+                                    }
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="panel-body" style="margin: 0px; padding: 0px; margin-top: 10px">
-                                    <img src="img/boric-acid.jpg" class="img-responsive" width="100">
+                                <div class="col-md-6">
+                                    <h4>Order #@o.Id</h4>
+                                    @foreach (var p in o.ProductsInOrder)
+                                    {
+                                        <h5>@Html.ActionLink(p.Name, "Product", "Catalogue", new {vendorCode = p.VendorCode}, null) @p.Amount g</h5>
+                                    }
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4>Order #221455</h4>
-                            <h5><a href="#">Nitric acid 120oz 100% Concentrated</a> x1</h5>
-                            <h5><a href="#">Nitric acid 120oz 100% Concentrated</a> x1</h5>
-                            <h5><a href="#">Nitric acid 120oz 100% Concentrated</a> x1</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <button id="submit" name="submit" class="btn btn-success" style="width: 140px;">
-                                Delivered <span class="fa fa-check" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="row account-wrapper">
-                        <div class="col-md-3">
-                            <div class="col-md-6">
-                                <div class="panel-body" style="margin: 0px; padding: 0px; margin-top: 10px">
-                                    <img src="img/boric-acid.jpg" class="img-responsive" width="100">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="panel-body" style="margin: 0px; padding: 0px; margin-top: 10px">
-                                    <img src="img/boric-acid.jpg" class="img-responsive" width="100">
+                                <div class="col-md-3">
+                                    <button id="submit" name="submit" class="@o.OrderStatus.StatusColor" style="width: 140px;">
+                                        @o.OrderStatus.Status <span class="@o.OrderStatus.StatusIcon" aria-hidden="true"></span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <h4>Order #221455</h4>
-                            <h5><a href="#">Nitric acid 120oz 100% Concentrated</a> x1</h5>
-                            <h5><a href="#">Nitric acid 120oz 100% Concentrated</a> x1</h5>
-                            <h5><a href="#">Nitric acid 120oz 100% Concentrated</a> x1</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <button id="submit" name="submit" class="btn btn-warning" style="width: 140px;">
-                                Processing <span class="fa fa-cogs" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                    }
+                }                
             </div>
-
-
-
 
             <!-- Order history -->
             <div class="panel-group">
@@ -93,75 +68,45 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="row account-wrapper">
-                        <button id="submit" name="submit" class="btn btn-danger btn-sm btn-account-trash" style="">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        </button>
-                        <div class="col-md-3">
-                            <div class="col-md-6">
-                                <div class="panel-body" style="margin: 0px; padding: 0px; margin-top: 10px">
-                                    <img src="img/boric-acid.jpg" class="img-responsive" width="100">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="panel-body" style="margin: 0px; padding: 0px; margin-top: 10px">
-                                    <img src="img/boric-acid.jpg" class="img-responsive" width="100">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4>Order #221455</h4>
-                            <h5><a href="#">Nitric acid 120oz 100% Concentrated</a> x1</h5>
-                            <h5><a href="#">Nitric acid 120oz 100% Concentrated</a> x1</h5>
-                            <h5><a href="#">Nitric acid 120oz 100% Concentrated</a> x1</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="col-md-4">
-                                <h3 style="margin-top: 8px;">500$</h3>
-                            </div>
-                            <div class="col-md-8">
-                                <button id="submit" name="submit" class="btn btn-info">
-                                    <span class="fa fa-refresh" aria-hidden="true"></span>
+                @foreach (var o in Model)
+                {
+                    if (o.OrderStatus.Status.Equals("Archived"))
+                    {
+                        <div class="panel panel-default">
+                            <div class="row account-wrapper">
+                                <button id="submit" name="submit" class="btn btn-danger btn-sm btn-account-trash" style="">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="row account-wrapper">
-                        <button id="submit" name="submit" class="btn btn-danger btn-sm btn-account-trash" style="">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        </button>
-                        <div class="col-md-3">
-                            <div class="col-md-6">
-                                <div class="panel-body" style="margin: 0px; padding: 0px; margin-top: 10px">
-                                    <img src="img/boric-acid.jpg" class="img-responsive" width="100">
+                                <div class="col-md-3">
+                                    @foreach (var p in o.ProductsInOrder)
+                                    {
+                                        <div class="col-md-6">
+                                            <div class="panel-body" style="margin: 0px; padding: 0px; margin-top: 10px">
+                                                <img src="@Url.Content(p.ProductImage.ImageMain)" class="img-responsive" width="100">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Order #@o.Id</h4>
+                                    @foreach (var p in o.ProductsInOrder)
+                                    {
+                                        <h5>@Html.ActionLink(p.Name, "Product", "Catalogue", new { vendorCode = p.VendorCode }, null)  @p.Amount g</h5>
+                                    }
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="col-md-4">
+                                        <h3 style="margin-top: 8px;">500$</h3>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <button id="submit" name="submit" class="@o.OrderStatus.StatusColor">
+                                            <span class="@o.OrderStatus.StatusIcon" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="panel-body" style="margin: 0px; padding: 0px; margin-top: 10px">
-                                    <img src="img/boric-acid.jpg" class="img-responsive" width="100">
-                                </div>
-                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <h4>Order #221455</h4>
-                            <h5><a href="#">Nitric acid 120oz 100% Concentrated</a> x1</h5>
-                            <h5><a href="#">Nitric acid 120oz 100% Concentrated</a> x1</h5>
-                            <h5><a href="#">Nitric acid 120oz 100% Concentrated</a> x1</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="col-md-4">
-                                <h3 style="margin-top: 8px;">500$</h3>
-                            </div>
-                            <div class="col-md-8">
-                                <button id="submit" name="submit" class="btn btn-info">
-                                    <span class="fa fa-refresh" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    }
+                }                               
             </div>
 

@@ -5,15 +5,15 @@ namespace ChemiSystems.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ChemiSystems.Infrastructure.ChemiContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ChemiSystems.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "ChemiSystems.Infrastructure.ChemiContext";
+            ContextKey = "ChemiSystems.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(ChemiSystems.Infrastructure.ChemiContext context)
+        protected override void Seed(ChemiSystems.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

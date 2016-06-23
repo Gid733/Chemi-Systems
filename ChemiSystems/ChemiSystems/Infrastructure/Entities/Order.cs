@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using ChemiSystems.Infrastructure.Base;
-using ChemiSystems.Models;
 
 namespace ChemiSystems.Infrastructure.Entities
 {
@@ -11,12 +11,11 @@ namespace ChemiSystems.Infrastructure.Entities
         public ICollection<ProductInOrder> ProductsInOrder { get; set; }
         public DateTime? DeliverToDate { get; set; }
         public string DeliverToAddress { get; set; }
-        public Guid? OrderedBy { get; set; }   
-        public OrderStatus OrderStatus { get; set; }
+        public string OrderedBy { get; set; }          
+        public double TotalPrice { get; set; }
 
-        public Order()
-        {
-            OrderStatus = OrderStatus.WaitingForPayment;
-        }
+        public Guid OrderStatusId { get; set; }
+        public OrderStatus OrderStatus { get; set; }
+        
     }   
 }

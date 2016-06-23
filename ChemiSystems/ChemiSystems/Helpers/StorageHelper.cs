@@ -11,7 +11,7 @@ namespace ChemiSystems.Helpers
 {
     public class StorageHelper
     {
-        public static List<ProductInCartViewModel> GetProductsLocal(string jsonLocalStorageObj, ChemiContext db)
+        public static List<ProductInCartViewModel> GetProductsLocal(string jsonLocalStorageObj, ApplicationDbContext db)
         {
             JObject obj = null;
             if(jsonLocalStorageObj != null)

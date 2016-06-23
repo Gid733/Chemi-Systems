@@ -52,14 +52,14 @@
                                     <span class="glyphicon glyphicon-minus"></span>
                                 </button>
                             </span>
-                            <input id="quantity-input" type="text" name="quant[1]" class="form-control input-number" value="@m.Amount" min="1" max="999999" onchange="productChanged('@m.Product.id', value)">
+                            <input id="quantity-input" type="text" name="quant[1]" class="form-control input-number" value="@m.Amount" min="1" max="999999" onchange="productChanged('@m.Product.Id', value)">
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
                                     <span class="glyphicon glyphicon-plus"></span>
                                 </button>
                             </span>
                         </div>
-                        <button type="button" class="btn btn-danger btn-xs" style="margin-left: 10px;" onclick="deleteProduct('@m.Product.id')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-danger btn-xs" style="margin-left: 10px;" onclick="deleteProduct('@m.Product.Id')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                     </div>
                     <div class="col-md-2 cart-wrapper">
                         <h3 class="text-center">

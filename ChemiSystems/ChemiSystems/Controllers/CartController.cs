@@ -14,7 +14,7 @@ namespace ChemiSystems.Controllers
 {
     public class CartController : Controller
     {
-        ChemiContext db = new ChemiContext();
+        ApplicationDbContext db = new ApplicationDbContext();
         // GET: Cart       
         public ActionResult Index()
         {           

@@ -6,18 +6,19 @@ using System.Web.Mvc;
 using ChemiSystems.Helpers;
 using ChemiSystems.Infrastructure;
 using ChemiSystems.Infrastructure.Entities;
+using ChemiSystems.Models;
 using Microsoft.AspNet.Identity;
 
 namespace ChemiSystems.Controllers
 {
     public class OrderController : Controller
     {
-        ChemiContext db = new ChemiContext();
+        ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Order
         public ActionResult Index(Guid? id)
         {
-            var order = db.Orders.FirstOrDefault(a => a.Id.Equals(id));
+            var order = db.Orders.FirstOrDefault(a => a.Id == id);
             if (order == null)
             {
                 return View("Error");
@@ -29,7 +30,7 @@ namespace ChemiSystems.Controllers
         public Guid? GetOrder(string jsonLocalStorageObj)
         {
             var products = StorageHelper.GetProductsLocal(jsonLocalStorageObj, db);
-
+            var currentUser = User.Identity.GetUserId();
             if (products == null)
             {
                 return null;
@@ -53,10 +54,16 @@ namespace ChemiSystems.Controllers
                 CreatedDate = p.Product.CreatedDate,
                 ChangedDate = p.Product.ChangedDate,
             }).ToList();
-
+           
             Order order = new Order()
             {
-                ProductsInOrder = productsInOrder
+                CreatedDate = DateTime.Now,
+                ChangedDate = DateTime.Now,
+                DeliverToDate = DateTime.Now,
+                DeliverToAddress = "",
+                OrderedBy = currentUser,
+                ProductsInOrder = productsInOrder,
+                OrderStatus = new OrderStatus()
             };
 
             db.Orders.Add(order);
