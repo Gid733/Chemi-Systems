@@ -6,19 +6,20 @@ using System.Web.Mvc;
 using ChemiSystems.Infrastructure;
 using ChemiSystems.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace ChemiSystems.Controllers
 {
     public class AccountProfileController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext _db = new ApplicationDbContext();
         // GET: AccountProfile/Orders/
         [Authorize]
         public ActionResult Orders()
         {
             //get current user and get his orders from db
             var currentUser = User.Identity.GetUserId();
-            var userOrders = db.Orders
+            var userOrders = _db.Orders
                 .Include("ProductsInOrder")
                 .Include("ProductsInOrder.ProductImage")
                 .Include("OrderStatus")               
@@ -32,7 +33,7 @@ namespace ChemiSystems.Controllers
         public ActionResult DeleteOrder (Guid orderId)
         {
             //select all orders with current order id and status Archived
-            var currentOrder = db.Orders
+            var currentOrder = _db.Orders
                 .Include("OrderStatus")
                 .FirstOrDefault(a => a.Id == orderId && a.OrderStatus.Status.Equals("Archived"));
             var currentUser = User.Identity.GetUserId();
@@ -41,7 +42,7 @@ namespace ChemiSystems.Controllers
             if (currentOrder != null && currentOrder.OrderedBy.Equals(currentUser))
             {
                 currentOrder.OrderStatus.Status = "Deleted";
-                db.SaveChanges();
+                _db.SaveChanges();
             }
             else
             {
@@ -61,7 +62,28 @@ namespace ChemiSystems.Controllers
         [Authorize]
         public ActionResult Settings()
         {
-            return View();
+            var user = System.Web.HttpContext.Current.GetOwinContext()
+                .GetUserManager<ApplicationUserManager>()
+                .FindById(User.Identity.GetUserId());
+
+            var userSettings = new UserSettingsModel()
+            {
+                Country = user.Country,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Street = user.Street,
+                ZipCode = user.ZipCode
+            };
+
+            return View(userSettings);
+        }
+
+        // POST: AccountProfile/SaveSettings
+        [Authorize]
+        [HttpPost]
+        public ActionResult SaveSettings()
+        {
+            return View("Settings");
         }
     }
 }

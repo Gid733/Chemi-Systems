@@ -254,6 +254,7 @@
     <Compile Include="Infrastructure\Entities\Product.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProductInCartViewModel.cs" />
+    <Compile Include="Models\UserSettingsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

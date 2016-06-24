@@ -1,4 +1,4 @@
-﻿
+﻿@model ChemiSystems.Models.UserSettingsModel
 @{
     ViewBag.Title = "Settings";
     Layout = "_ProfileLayout.cshtml";
@@ -6,87 +6,44 @@
 
 
 
-            <form class="form-horizontal">
-                <fieldset>
-
-                    <!-- Form Name -->
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="fn">First name</label>
-                        <div class="col-md-4">
-                            <input id="fn" name="fn" type="text" placeholder="John" class="form-control input-md" required="">
-
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="ln">Last name</label>
-                        <div class="col-md-4">
-                            <input id="ln" name="ln" type="text" placeholder="Smitt" class="form-control input-md" required="">
-
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="cmpny">Company</label>
-                        <div class="col-md-4">
-                            <input id="cmpny" name="cmpny" type="text" placeholder="Example ltd." class="form-control input-md" required="">
-
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="add1">Street</label>
-                        <div class="col-md-4">
-                            <input id="add1" name="add1" type="text" placeholder="House number, street name" class="form-control input-md" required="">
-
-                        </div>
-                    </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="city">City</label>
-                        <div class="col-md-4">
-                            <input id="city" name="city" type="text" placeholder="city" class="form-control input-md" required="">
-
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="zip">Zip Code</label>
-                        <div class="col-md-4">
-                            <input id="zip" name="zip" type="text" placeholder="12345" class="form-control input-md" required="">
-
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="ctry">Country</label>
-                        <div class="col-md-4">
-                            <select id="ctry" name="ctry" type="text" placeholder="Country" class="form-control input-md bfh-countries" data-country="UA" required=""></select>
-                        </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="phone">Phone</label>
-                        <div class="col-md-4">
-                            <input id="phone" name="phone" type="text" class="form-control input-md bfh-phone" data-country="ctry" required="">
-                        </div>
-                    </div>
-
-                    <!-- Button -->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="submit"></label>
-                        <div class="col-md-4">
-                            <button id="submit" name="submit" class="btn btn-primary">Save</button>
-                        </div>
-                    </div>
-
-                </fieldset>
-            </form>
-
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4 class="text-center">Profile settings</h4>
+        @Html.ValidationSummary("", new { @class = "text-danger" })       
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-4 control-label" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-4 control-label" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Country, new { @class = "col-md-4 control-label" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.Country, new { @class = "form-control input-md bfh-countries" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Street, new { @class = "col-md-4 control-label" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.Street, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ZipCode, new { @class = "col-md-4 control-label" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control" })
+            </div>
+        </div>       
+        <div class="form-group">
+            <div class="col-md-8">
+                <input type="submit" class="btn btn-default pull-right" value="Save" />
+            </div>
+        </div>
+    }
