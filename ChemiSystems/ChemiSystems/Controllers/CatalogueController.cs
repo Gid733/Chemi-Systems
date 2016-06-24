@@ -22,12 +22,12 @@ namespace ChemiSystems.Controllers
 
     public class CatalogueController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext _db = new ApplicationDbContext();
         
         // GET: Catalogue
         public ActionResult Index()
         {           
-            var users = db.Products;
+            var users = _db.Products;
             return View("Catalogue");
         }
 
@@ -177,13 +177,13 @@ namespace ChemiSystems.Controllers
 
 
 
-            db.ProductCategories.Add(category1);
-            db.ProductCategories.Add(category2);
-            db.SaveChanges();
-            db.ProductImages.AddRange(new List<ProductImage> { image11, image12, image13, image21, image22, image23 });
-            db.SaveChanges();
-            db.Products.AddRange(new List<Product> { product11, product12, product13, product21, product22, product23 });
-            db.SaveChanges();
+            _db.ProductCategories.Add(category1);
+            _db.ProductCategories.Add(category2);
+            _db.SaveChanges();
+            _db.ProductImages.AddRange(new List<ProductImage> { image11, image12, image13, image21, image22, image23 });
+            _db.SaveChanges();
+            _db.Products.AddRange(new List<Product> { product11, product12, product13, product21, product22, product23 });
+            _db.SaveChanges();
             return null;
         }
 
@@ -192,7 +192,7 @@ namespace ChemiSystems.Controllers
         {
             
 
-            var categories = db.ProductCategories.ToList();
+            var categories = _db.ProductCategories.ToList();
             return PartialView("~/Views/Catalogue/_CatalogueSidebarPartial.cshtml", categories);
         }
 
@@ -203,7 +203,7 @@ namespace ChemiSystems.Controllers
             List<Product> products;
             if (id.HasValue)
             {
-                products = db.Products
+                products = _db.Products
                     .Include("ProductImage")
                     .Include("ProductCategory")
                     .Where(a => a.ProductCategoryId == id.Value)
@@ -211,7 +211,7 @@ namespace ChemiSystems.Controllers
             }
             else
             {
-                products = db.Products.Include("ProductImage").ToList();
+                products = _db.Products.Include("ProductImage").ToList();
             }
             return PartialView("~/Views/Catalogue/_CatalogueProductsPartial.cshtml", products);
         }
@@ -219,7 +219,7 @@ namespace ChemiSystems.Controllers
         //GET: /Catalogue/Product (single product)
         public ActionResult Product(string vendorCode)
         {
-            Product product = db.Products
+            Product product = _db.Products
                 .Include("ProductImage")
                 .Include("ProductCategory")
                 .FirstOrDefault(a => a.VendorCode.Equals(vendorCode));

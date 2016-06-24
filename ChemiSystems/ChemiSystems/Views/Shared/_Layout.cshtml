@@ -30,11 +30,11 @@
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right navbar-header-margin">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Store</a></li>
-                            <li><a href="#">About us</a></li>
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Store", "Index", "Catalogue")</li>
+                            <li>@Html.ActionLink("About us", "About", "Home")</li>
                             <li>
-                                <a href="#" class="fa fa-shopping-cart"><span id="cart-amount" class="badge badge-success"></span></a>
+                                <a href="@Url.Action("Index", "Cart")" class="fa fa-shopping-cart"><span id="cart-amount" class="badge badge-success"></span></a>
                             </li>
                             <li class="dropdown" id="menuLogin">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">

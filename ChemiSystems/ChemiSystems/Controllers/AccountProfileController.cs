@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.Mvc;
 using ChemiSystems.Infrastructure;
@@ -62,17 +63,14 @@ namespace ChemiSystems.Controllers
         [Authorize]
         public ActionResult Settings()
         {
-            var user = System.Web.HttpContext.Current.GetOwinContext()
-                .GetUserManager<ApplicationUserManager>()
-                .FindById(User.Identity.GetUserId());
-
+            var userData = GetUserData();
             var userSettings = new UserSettingsModel()
             {
-                Country = user.Country,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Street = user.Street,
-                ZipCode = user.ZipCode
+                Country = userData.Country,
+                FirstName = userData.FirstName,
+                LastName = userData.LastName,
+                Street = userData.Street,
+                ZipCode = userData.ZipCode
             };
 
             return View(userSettings);
@@ -81,9 +79,26 @@ namespace ChemiSystems.Controllers
         // POST: AccountProfile/SaveSettings
         [Authorize]
         [HttpPost]
-        public ActionResult SaveSettings()
+        public ActionResult SaveSettings(UserSettingsModel model)
         {
+            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var userData = GetUserData();
+            userData.FirstName = model.FirstName;
+            userData.LastName = model.LastName;
+            userData.Country = model.Country;
+            userData.Street = model.Street;
+            userData.ZipCode = model.ZipCode;
+            manager.Update(userData);
+            System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>().SaveChanges();
             return View("Settings");
         }
+
+        private ApplicationUser GetUserData()
+        {
+            var userData = System.Web.HttpContext.Current.GetOwinContext()
+                .GetUserManager<ApplicationUserManager>()
+                .FindById(User.Identity.GetUserId());
+            return userData;
+        } 
     }
 }
