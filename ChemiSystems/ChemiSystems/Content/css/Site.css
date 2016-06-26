@@ -65,6 +65,13 @@ a {
     margin-bottom: 5px !important;
 }
 
+/*
+    Content-wrapper
+*/
+.content-wrapper {
+    margin-bottom: -51px !important;
+    padding-bottom: 51px !important;
+}
 
 /*
 	First-section 
