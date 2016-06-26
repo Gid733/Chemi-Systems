@@ -189,9 +189,7 @@ namespace ChemiSystems.Controllers
 
         //GET: /Catalogue/Sidebar (partial)
         public ActionResult GetSidebar()
-        {
-            
-
+        {           
             var categories = _db.ProductCategories.ToList();
             return PartialView("~/Views/Catalogue/_CatalogueSidebarPartial.cshtml", categories);
         }

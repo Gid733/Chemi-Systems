@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ChemiSystems.Models;
 
 namespace ChemiSystems.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _db = new ApplicationDbContext();
         public ActionResult Index()
         {
             return View();
         }
 
         public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+        {          
+            var topSells = _db.Products
+                .Include("ProductImage")
+                .OrderBy(r => Guid.NewGuid())
+                .Take(3)
+                .ToList();
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+            return View(topSells);
+        }        
     }
 }

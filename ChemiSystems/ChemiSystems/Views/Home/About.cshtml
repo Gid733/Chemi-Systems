@@ -1,7 +1,142 @@
-﻿@{
+﻿@model List<ChemiSystems.Infrastructure.Entities.Product>
+@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<div class="container">
+    <!-- About us & Contacts -->
+    <section class="row" style="padding-top: 20px;">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-header">
+                    <div class="row">
+                        <div class="text-center">
+                            <h3 style="margin-bottom: 5px !important;">About us</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                <strong>Chemi systems</strong> is a German multinational chemical and pharmaceutical company founded in Barmen (today a part of Wuppertal), Germany in 1863. It is headquartered in Leverkusen, North Rhine-Westphalia, Germany, where its illuminated sign is a landmark. Chemi system's primary areas of business include human and veterinary pharmaceuticals; consumer healthcare products; agricultural chemicals and biotechnology products; and high value polymers.
+                            </p>
+                            <p>
+                                The company is a component of the Euro Stoxx 50 stock market index. Chemi systems first and best known product was aspirin; there is a dispute about what scientist at Chemi systems made the most important contributions to it, Arthur Eichengrün or Felix Hoffmann. Chemi systems trademarked "heroin" and marketed it as a cough suppressant and non-addictive substitute for morphine from 1898 to 1910. Chemi systems also introduced phenobarbital, prontosil, the first widely used antibiotic and the subject of the 1939 Nobel Prize in Medicine, the antibiotic Cipro (ciprofloxacin), and Yaz (drospirenone) birth control pills. In 2014 Chemi systems bought Merck's consumer business, with brands such as Claritin, Coppertone and Dr. Scholl's. Its Chemi's business develops genetically modified crops and pesticides.
+                            </p>
+                            <p>
+                                Its materials science division makes polymers like polyurethanes and polycarbonate. In 1925, Chemi systems became part of IG Farben, the world's largest chemical company. Following the Nazi takeover of Germany, IG Farben was embroiled in the Nazi regime's policies as a large government contractor. After World War II, Chemi systems was reestablished as an independent company, and quickly regained its position as one of the world's largest chemical and pharmaceutical corporations. Chemi systems has been involved in controversies regarding some of its drug products; its statin drug Baycol (cerivastatin) was discontinued in 2001 after 52 people died from renal failure, and Trasylol (aprotinin), used to control bleeding during major surgery, was withdrawn from the markets worldwide when reports of increased mortality emerged; it was later re-introduced in Europe but not in the US.
+                            </p>
 
-<p>Use this area to provide additional information.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-header">
+                        <div class="row">
+                            <div class="text-center">
+                                <h3>Contacts</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body" style="padding-top: 0px;">
+                        <div class="row">
+                            <div class="text-center">
+                                <div class="col-md-3 col-xs-3">
+                                    <span class="fa fa-skype fa-3x" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-md-3 col-xs-3">
+                                    <span class="fa fa-vk fa-3x" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-md-3 col-xs-3">
+                                    <span class="fa fa-envelope fa-3x" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-md-3 col-xs-3">
+                                    <span class="fa fa-linkedin-square fa-3x" aria-hidden="true"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
+                        <div style='overflow:hidden;height:400px;width:100%;'>
+                            <div id='gmap_canvas' style='height:400px;width:100%;'></div>
+                            <style>
+                                #gmap_canvas img {
+                                    max-width: none !important;
+                                    background: none !important;
+                                }
+                            </style>
+                        </div> <a href='http://maps-generator.com/ru' >http://Maps-Generator.com/ru</a>
+                        <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=f363fc788bbe58d9f737756a0f45085361cf059d'></script>
+                        <script type='text/javascript'>
+                                    function init_map() {
+                                        var myOptions = {
+                                            zoom: 16
+                                            , center: new google.maps.LatLng(50.4326966, 30.542065399999956)
+                                            , mapTypeId: google.maps.MapTypeId.ROADMAP
+                                        };
+                                        map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+                                        marker = new google.maps.Marker({
+                                            map: map
+                                            , position: new google.maps.LatLng(50.4326966, 30.542065399999956)
+                                        });
+                                        infowindow = new google.maps.InfoWindow({
+                                            content: '<strong>Main office</strong><br>Pecherska 2<br> Kiev<br>'
+                                        });
+                                        google.maps.event.addListener(marker, 'click', function () {
+                                            infowindow.open(map, marker);
+                                        });
+                                        infowindow.open(map, marker);
+                                    }
+                                    google.maps.event.addDomListener(window, 'load', init_map);
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Top sells block -->
+    <aside class="panel panel-default">
+        <div class="panel-header text-center">
+            <h3>Top sells</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    @foreach (var m in Model)
+                    {
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4>@m.Name</h4>
+                                </div>
+                                <div class="panel-body panel-image-wrapper">
+                                    <img src="@Url.Content(m.ProductImage.ImageMain)" class="img-responsive" width="260">
+                                </div>
+                                <div class="panel-footer text-center row" style="margin-left: 0px; margin-right: 0px;">
+
+                                    <div class="col-md-6 panel-footer-wrapper" style="padding-bottom: 15px;">
+                                        <h3>@m.Price $/g</h3>
+                                    </div>
+                                    <div class="col-md-6 panel-footer-wrapper">
+                                        @Html.ActionLink("Buy now", "Product", "Catalogue", new { vendorCode = m.VendorCode }, new { @class = "btn btn-primary btn-large" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }                                       
+                </div>               
+            </div>
+        </div>
+    </aside>
+</div>

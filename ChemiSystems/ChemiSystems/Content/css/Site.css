@@ -90,8 +90,8 @@ a {
 
 @media only screen and (min-width: 1000px) {
     .second-section-wrap {
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding-top: 25px;
+        padding-bottom: 25px;
     }
 }
 
@@ -144,7 +144,7 @@ footer {
 }
 
 .footer-btn:hover {
-    background-color: #cfcfcf !important;
+    background-color: #a9a9a9 !important;
 }
 
 .footer-callback-container {
@@ -189,6 +189,54 @@ footer .btn {
     }
     .footer-label-container {
         min-height: 50px;
+    }
+}
+
+
+
+
+/* Между 970пкс и 1170 */
+
+
+/* Между 750пкс и 970 */
+
+@media (max-width: 991px) and (min-width: 768px) {
+    footer {
+        margin-top: -51px !important;
+    }
+    .footer-callback-container {
+        border: none;
+        min-height: 30px;
+    }
+
+    .footer-terms-container {
+        border: none;
+        min-height: 30px;
+    }
+
+    .footer-label-container { min-height: 30px; }
+}
+
+
+
+
+
+/* Между 750пкс и 970 */
+
+@media (max-width: 991px) and (min-width: 768px) {
+    footer {
+        margin-top: -51px !important;
+    }
+    .footer-callback-container {
+        border: none;
+        min-height: 30px;
+    }
+    .footer-terms-container {
+        border: none;
+        min-height: 30px;
+    }
+    .footer-label-container {
+        min-height: 30px;
     }
 }
 

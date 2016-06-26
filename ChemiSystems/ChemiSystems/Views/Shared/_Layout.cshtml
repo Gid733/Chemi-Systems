@@ -14,77 +14,71 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="content">
-            <!-- Navigation menu -->
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Chemi Systems<span><img src="~/Content/img/main-icon.png" class="icon-main" height="22"></span>    </a>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right navbar-header-margin">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Store", "Index", "Catalogue")</li>
-                            <li>@Html.ActionLink("About us", "About", "Home")</li>
-                            <li>
-                                <a href="@Url.Action("Index", "Cart")" class="fa fa-shopping-cart"><span id="cart-amount" class="badge badge-success"></span></a>
-                            </li>
-                            <li class="dropdown" id="menuLogin">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <span class="fa fa-user"></span>
-                                </a>
-                                <div class="dropdown-menu" id="account-dropdown" name="account-dropdown" style="padding: 17px; padding-top: 5px;">
-                                    
-
-
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+<div class="wrapper">
+    <div class="content" style="margin-bottom: 0 !important">
+        <!-- Navigation menu -->
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Chemi Systems<span><img src="~/Content/img/main-icon.png" class="icon-main" height="22"></span>    </a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-            </nav>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right navbar-header-margin">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Store", "Index", "Catalogue")</li>
+                        <li>@Html.ActionLink("About us", "About", "Home")</li>
+                        <li>
+                            <a href="@Url.Action("Index", "Cart")" class="fa fa-shopping-cart"><span id="cart-amount" class="badge badge-success"></span></a>
+                        </li>
+                        <li class="dropdown" id="menuLogin">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="fa fa-user"></span>
+                            </a>
+                            <div class="dropdown-menu" id="account-dropdown" name="account-dropdown" style="padding: 17px; padding-top: 5px;">
 
-            <!-- First section -->
-            <div class="body-content">
-                @RenderBody()
+
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </nav>
 
-
-            <!-- Footer -->
-
-            <footer class="container-fluid text-center">
-                <div class="row">
-                    <div class="col-md-4 col-xs-8 footer-label-container">
-                        <div class="btn-group-vertical btn-block text-center">
-                            <a class="btn btn-default footer-btn" href="#">Chemi Systems @DateTime.Now.Year &copy;</a>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-xs-4 text-center footer-terms-container">
-                        <div class="btn-group-vertical btn-block text-center">
-                            <a class="btn btn-default footer-btn" href="#">Feedback</a>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-xs-4 text-center footer-callback-container">
-                        <a id="phone-button" class="btn btn-success footer-callback-btn">Callback <span class="glyphicon glyphicon-phone"></span></a>
-                    </div>
-                    <div class="col-md-4 col-xs-8 text-center">
-                        <img src="" class="footer-bank-image" alt="" />
-                    </div>
-                </div>
-            </footer>
+        <!-- First section -->
+        <div class="body-content">
+            @RenderBody()
         </div>
+        
     </div>
-
-
-
-   
+    <!-- Footer -->
+    <footer class="container-fluid text-center" style="margin-top: 0 !important">
+        <div class="row">
+            <div class="col-md-4 col-xs-8 footer-label-container">
+                <div class="btn-group-vertical btn-block text-center">
+                    <a class="btn btn-default footer-btn" href="#">Chemi Systems @DateTime.Now.Year &copy;</a>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-4 text-center footer-terms-container">
+                <div class="btn-group-vertical btn-block text-center">
+                    <a class="btn btn-default footer-btn" href="#">Feedback</a>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-4 text-center footer-callback-container">
+                <a id="phone-button" class="btn btn-success footer-callback-btn">Callback <span class="glyphicon glyphicon-phone"></span></a>
+            </div>
+            <div class="col-md-4 col-xs-8 text-center">
+                <img src="" class="footer-bank-image" alt="" />
+            </div>
+        </div>
+    </footer>
+</div>
 
     <!-- Dropdown -->
 <script>
