@@ -60,7 +60,7 @@ namespace ChemiSystems.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return PartialView();
+            return PartialView("_LoginPartial");
         }
 
         //
@@ -72,7 +72,7 @@ namespace ChemiSystems.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return PartialView("_LoginPartial", model);
             }
 
             // This doesn't count login failures towards account lockout

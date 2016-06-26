@@ -381,7 +381,14 @@ footer .btn {
     {
         resize: none;
     }
-    
+  
+    /* Account Profile */ 
+    .order-img-wrapper {
+        margin: 0px; 
+        padding: 0px; 
+        margin-top: 10px; 
+        margin-bottom: 10px;
+    }
 
 /* Footer */
 

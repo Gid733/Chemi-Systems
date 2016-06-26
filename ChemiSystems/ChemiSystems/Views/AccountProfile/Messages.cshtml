@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ChemiSystems.Models.MessageViewModel>
 @{
     ViewBag.Title = "Messages";
     Layout = "_ProfileLayout.cshtml";
@@ -6,43 +6,31 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="msg-wrap">
-                        <div class="media msg">
-                            <div class="media-body">
-                                <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
-                                <h5 class="media-heading">Gideon Klain</h5>
-                                <small class="col-lg-10">Arnab Goswami: "Some people close to Congress Party and close to the government had a #secret #meeting in a farmhouse in Maharashtra in which Anna Hazare send some representatives and they had a meeting in the discussed how to go about this all fast and how eventually this will end."</small>
+                        @foreach (var m in Model)
+                        {
+                            <div class="media msg">
+                                <div class="media-body">
+                                    <small class="pull-right time"><i class="fa fa-clock-o"></i> @m.MessageDate</small>
+                                    <h5 class="media-heading">@m.SenderFullName</h5>
+                                    <small class="col-lg-10">@m.MessageContent</small>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    @using (Html.BeginForm("AddMessage", "AccountProfile"))
+                    {
+                        <div class="col-md-10 ">
+                            <div class="send-wrap ">
+                                @Html.TextArea("messageContent", new { rows = 3, placeholder = "Write a reply...", @class = "form-control send-message" })
+                                @Html.Hidden("orderId", (Guid)ViewBag.OrderId)
                             </div>
                         </div>
-                        <div class="media msg">
-
-                            <div class="media-body">
-                                <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
-
-                                <h5 class="media-heading">Administer</h5>
-                                <small class="col-lg-10">Arnab Goswami: "Some people close to Congress Party and close to the government had a #secret #meeting in a farmhouse in Maharashtra in which Anna Hazare send some representatives and they had a meeting in the discussed how to go about this all fast and how eventually this will end."</small>
+                        <div class="col-md-2">
+                            <div class="btn-panel">
+                                <input type="submit" value="Send message" class="btn btn-sm btn-primary send-message-btn pull-right"/><i class="fa fa-plus"></i>                               
                             </div>
                         </div>
-
-                        <div class="media msg">
-                            <div class="media-body">
-                                <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
-                                <h5 class="media-heading">Gideon Klain</h5>
-
-                                <small class="col-lg-10">Arnab Goswami: "Some people close to Congress Party and close to the government had a #secret #meeting in a farmhouse in Maharashtra in which Anna Hazare send some representatives and they had a meeting in the discussed how to go about this all fast and how eventually this will end."</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-10 ">
-                        <div class="send-wrap ">
-                            <textarea class="form-control send-message" rows="3" placeholder="Write a reply..."></textarea>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2">
-                        <div class="btn-panel">
-                            <a href="" class="btn btn-sm btn-primary send-message-btn pull-right" role="button"><i class="fa fa-plus"></i> Send Message</a>
-                        </div>
-                    </div>
+                    }                   
                 </div>
             </div>
 

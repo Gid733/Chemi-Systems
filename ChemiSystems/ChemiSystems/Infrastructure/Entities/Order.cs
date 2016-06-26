@@ -17,5 +17,6 @@ namespace ChemiSystems.Infrastructure.Entities
         public Guid OrderStatusId { get; set; }
         public OrderStatus OrderStatus { get; set; }
         
+        public ICollection<OrderMessage> OrderMessages { get; set; } 
     }   
 }

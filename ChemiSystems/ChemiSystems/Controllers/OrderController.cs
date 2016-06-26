@@ -30,7 +30,7 @@ namespace ChemiSystems.Controllers
         public Guid? GetOrder(string jsonLocalStorageObj)
         {
             var products = StorageHelper.GetProductsLocal(jsonLocalStorageObj, db);
-            var currentUser = User.Identity.GetUserId();
+            var currentUserId = User.Identity.GetUserId();
             if (products == null)
             {
                 return null;
@@ -61,7 +61,7 @@ namespace ChemiSystems.Controllers
                 ChangedDate = DateTime.Now,
                 DeliverToDate = DateTime.Now,
                 DeliverToAddress = "",
-                OrderedBy = currentUser,
+                OrderedBy = currentUserId,
                 ProductsInOrder = productsInOrder,
                 OrderStatus = new OrderStatus()
             };

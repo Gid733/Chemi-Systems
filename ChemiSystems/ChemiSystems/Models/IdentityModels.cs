@@ -33,12 +33,14 @@ namespace ChemiSystems.Models
         {
         }
 
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<ProductInOrder> ProductInOrder { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductInOrder> ProductInOrder { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<OrderMessage> OrderMessages { get; set; } 
 
         public static ApplicationDbContext Create()
         {

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Protocols;
 using ChemiSystems.Infrastructure;
+using ChemiSystems.Infrastructure.Entities;
 using ChemiSystems.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -54,9 +56,63 @@ namespace ChemiSystems.Controllers
 
         // GET: AccountProfile/Messages/
         [Authorize]
-        public ActionResult Messages()
+        public ActionResult Messages(Guid orderId)
         {
-            return View();
+            //check if user have that order
+            var currentUser = GetUserData();
+            var userOrder = _db.Orders.FirstOrDefault(a => a.OrderedBy.Equals(currentUser.Id));
+            if (userOrder == null)
+            {
+                return View("Error");
+            }
+            //find current order by guid
+            var currentOrder = _db.Orders.Include("OrderMessages").FirstOrDefault(a => a.Id.Equals(orderId));
+            List<MessageViewModel> messages = new List<MessageViewModel>();
+
+            //if current order inst null - add all messages by user to list in current order
+            if (currentOrder != null)
+                messages.AddRange(from a in currentOrder.OrderMessages
+                    let senderUser = _db.Users.FirstOrDefault(x => x.Id.Equals(a.UserId.ToString()))
+                    select new MessageViewModel()
+                    {
+                        MessageContent = a.Content,
+                        MessageDate = a.DateSend,
+                        SenderFullName = senderUser.FirstName + " " + senderUser.LastName
+                    });
+            else
+            {
+                return View("Error");
+            }
+
+            ViewBag.OrderId = currentOrder.Id;
+
+            return View(messages);
+        }
+
+        // POST: AccountProfile/AddMessage/
+        [Authorize]
+        [HttpPost]
+        public ActionResult AddMessage(Guid orderId, string messageContent)
+        {
+            //check if user have that order
+            var currentUser = GetUserData();
+            var userOrder = _db.Orders.FirstOrDefault(a => a.OrderedBy.Equals(currentUser.Id));
+            if (userOrder == null)
+            {
+                return View("Error");
+            }
+
+            var currentOrder = _db.Orders.Include("OrderMessages").FirstOrDefault(a => a.Id.Equals(orderId));
+
+            currentOrder?.OrderMessages.Add(new OrderMessage()
+            {
+                Content = messageContent,
+                UserId = Guid.Parse(currentUser.Id)
+            });
+
+            _db.SaveChanges();
+
+            return View("Messages");
         }
 
         // GET: AccountProfile/Settings
@@ -99,6 +155,6 @@ namespace ChemiSystems.Controllers
                 .GetUserManager<ApplicationUserManager>()
                 .FindById(User.Identity.GetUserId());
             return userData;
-        } 
+        }        
     }
 }
