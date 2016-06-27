@@ -15,7 +15,7 @@ namespace ChemiSystems.Infrastructure.Entities
 
         public OrderStatus()
         {
-            Status = "Archived";
+            Status = "Proceed";
             StatusColor = "btn btn-success";
             StatusIcon = "fa fa-credit-card";
         }

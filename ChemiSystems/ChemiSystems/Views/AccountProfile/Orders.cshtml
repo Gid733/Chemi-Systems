@@ -43,9 +43,9 @@
                                     }
                                 </div>
                                 <div class="col-md-3">
-                                    <button id="submit" name="submit" class="@o.OrderStatus.StatusColor" style="width: 140px;">
+                                    <button id="submit" onclick="location.href='@Url.Action("Messages", new {orderId = o.Id})'" name="submit" class="@o.OrderStatus.StatusColor" style="width: 160px;">
                                         @o.OrderStatus.Status <span class="@o.OrderStatus.StatusIcon" aria-hidden="true"></span>
-                                    </button>
+                                    </button>                                    
                                 </div>
                             </div>
                         </div>

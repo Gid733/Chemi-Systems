@@ -112,7 +112,12 @@ namespace ChemiSystems.Controllers
 
             _db.SaveChanges();
 
-            return View("Messages");
+            if (currentOrder != null)
+                return RedirectToAction("Messages", new {orderId});
+            else
+            {
+                return View("Error");
+            }
         }
 
         // GET: AccountProfile/Settings
