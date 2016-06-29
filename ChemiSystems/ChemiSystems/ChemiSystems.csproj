@@ -236,6 +236,7 @@
     </Compile>
     <Compile Include="Infrastructure\Entities\OrderMessage.cs" />
     <Compile Include="Infrastructure\Entities\OrderStatus.cs" />
+    <Compile Include="Infrastructure\Entities\PaymentTransaction.cs" />
     <Compile Include="Infrastructure\Entities\ProductCategory.cs" />
     <Compile Include="Infrastructure\Entities\ProductImage.cs" />
     <Compile Include="Infrastructure\Entities\Order.cs" />
@@ -259,6 +260,9 @@
     <Compile Include="Infrastructure\Entities\Product.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MessageViewModel.cs" />
+    <Compile Include="Models\Payment\AddMoneyModel.cs" />
+    <Compile Include="Models\Payment\LiqPayCallBack.cs" />
+    <Compile Include="Models\Payment\LiqPayModel.cs" />
     <Compile Include="Models\ProductInCartViewModel.cs" />
     <Compile Include="Models\UserSettingsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

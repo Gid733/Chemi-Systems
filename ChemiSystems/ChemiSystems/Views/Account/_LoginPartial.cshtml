@@ -44,6 +44,7 @@ else
         <section id="loginForm">
             <form method="POST" id="LoginForm" action="javascript:void(null);" onsubmit="LoginPost()">
                 @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
                 <div class="input-group input-group-sm">
                     @Html.TextBoxFor(m => m.Email, new {@class = "form-control  dropdown-wrapper", placeholder = "Email"})
                     @Html.ValidationMessageFor(m => m.Email, "", new {@class = ""})

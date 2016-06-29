@@ -70,10 +70,10 @@ namespace ChemiSystems.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
-            {
-                return PartialView("_LoginPartial", model);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return PartialView("_LoginPartial");
+            //}
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
