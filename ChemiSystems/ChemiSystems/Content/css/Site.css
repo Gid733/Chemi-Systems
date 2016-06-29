@@ -390,6 +390,16 @@ footer .btn {
         margin-bottom: 10px;
     }
 
+    /* Modal */
+    .modal-header {
+            background-color: #5cb85c;
+            color: white !important;
+            text-align: center;
+        }
+
+        .modal-footer {
+            background-color: #f9f9f9;
+        }
 /* Footer */
 
 html, body {

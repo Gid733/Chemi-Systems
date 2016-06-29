@@ -2,10 +2,10 @@
 
 <h6>Welcome, @Model.FirstName @Model.LastName!</h6>
     <div class="row">
-        <div class="col-md-4 col-xs-4 col-sm-4">
+        <div class="col-md-6 col-xs-4 col-sm-4">
             @Html.ActionLink("Profile", "Orders", "AccountProfile", new {id=""}, new { @class = "btn btn-primary btn-sm" })
         </div>
-        <div class="col-md-8 col-xs-8 col-sm-8">
+        <div class="col-md-6 col-xs-8 col-sm-8">
             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
             {
             @Html.AntiForgeryToken()

@@ -234,6 +234,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Entities\Feedback.cs" />
     <Compile Include="Infrastructure\Entities\OrderMessage.cs" />
     <Compile Include="Infrastructure\Entities\OrderStatus.cs" />
     <Compile Include="Infrastructure\Entities\PaymentTransaction.cs" />
@@ -252,6 +253,10 @@
     <Compile Include="Migrations\201606262118488_OrderMessages.cs" />
     <Compile Include="Migrations\201606262118488_OrderMessages.Designer.cs">
       <DependentUpon>201606262118488_OrderMessages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606292146290_Feedback.cs" />
+    <Compile Include="Migrations\201606292146290_Feedback.Designer.cs">
+      <DependentUpon>201606292146290_Feedback.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -354,7 +359,6 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\AccountProfile\Messages.cshtml" />
     <Content Include="Views\AccountProfile\Orders.cshtml" />
     <Content Include="Views\AccountProfile\Settings.cshtml" />
@@ -389,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606262118488_OrderMessages.resx">
       <DependentUpon>201606262118488_OrderMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606292146290_Feedback.resx">
+      <DependentUpon>201606292146290_Feedback.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -15,7 +15,7 @@
 
 <body>
 <div class="wrapper">
-    <div class="content content-wrapper" >
+    <div class="content content-wrapper">
         <!-- Navigation menu -->
         <nav class="navbar navbar-default" role="navigation">
             <div class="container">
@@ -55,7 +55,7 @@
         <div class="body-content">
             @RenderBody()
         </div>
-        
+
     </div>
     <!-- Footer -->
     <footer class="container-fluid text-center" style="margin-top: 0 !important">
@@ -71,18 +71,44 @@
                 </div>
             </div>
             <div class="col-md-2 col-xs-4 text-center footer-callback-container">
-                <a id="phone-button" class="btn btn-success footer-callback-btn">Callback <span class="glyphicon glyphicon-phone"></span></a>
+                <a id="feedback-btn" class="btn btn-success footer-callback-btn">Callback <span class="glyphicon glyphicon-phone"></span></a>
             </div>
             <div class="col-md-4 col-xs-8 text-center">
-                <img src="" class="footer-bank-image" alt="" />
+                <img src="" class="footer-bank-image" alt=""/>
             </div>
         </div>
     </footer>
 </div>
 
-    <!-- Dropdown -->
+    <!-- Modal -->
+    <div class="modal fade" id="feedback-modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="padding: 5px 5px">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3><span class="glyphicon glyphicon-envelope"></span> Feedback</h3>
+                </div>
+                <div class="modal-body" style="padding:20px 20px;">
+                    <form role="form" id="feedback-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="feedback-email" placeholder="Enter email" pattern="^[a-zA-Z0-9._+-]+@("@")[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$">
+                        </div>
+                        <div class="form-group">
+                            <textarea type="text" class="form-control" id="feedback-message" rows="6" placeholder="Enter feedback..." style="-moz-resize: none; -ms-resize: none; -o-resize: none; resize: none;"></textarea>
+                        </div>
+                    </form>
+                    <button id="feedback-post-btn" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-arrow-up"></span> Submit</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         //Login form loading
         $.ajax({
             url: '/Account/Login',
@@ -94,6 +120,34 @@
             }
         });
 
+        //bind modal      
+        $("#feedback-btn").click(function() {
+            $("#feedback-modal").modal();
+        });
+
+        //send modal
+        $("#feedback-post-btn").click(function() {
+            var feedbackEmail = $("#feedback-email").val();
+            var feedbackMessage = $("#feedback-message").val();
+            $.ajax({
+                url: '/Home/Feedback',
+                data: { email:feedbackEmail, content:feedbackMessage },
+                type: 'POST',
+                success: function () {
+                    bootstrap_alert.warning('The feedback is sucessfully submited', 'success', 3000);
+                    $("#feedback-modal").modal("hide");
+                    $("#feedback-email").clear();
+                    $("#feedback-message").clear();
+                },
+                error: function() {
+                    bootstrap_alert.warning('Error, feedback is not submitted', 'danger', 3000);
+                }
+            });
+        });
+       
+       
+
+
         //item amount in cart
         var amount = localStorage.length;
         if (amount > 0)
@@ -102,6 +156,7 @@
             $("cart-amount").hide();
 
     });
+
     function LoginPost() {
         $('#loading-gif').show();
         var msg = $("#LoginForm").serialize();
@@ -109,12 +164,13 @@
             type: 'POST',
             url: '/Account/Login',
             data: msg,
-            success: function () {
+            success: function() {
                 SignedInGet();
             },
-            error: function () {
+            error: function() {
                 $('#loading-gif').hide();
-                alert("Error");
+                $("#logpass-input").addClass("has-error");
+                bootstrap_alert.warning('Error, invalid email/password', 'danger', 3000);
             }
         });
     }
@@ -124,7 +180,7 @@
             type: "GET",
             url: '/Account/SignedIn',
             dataType: 'html',
-            success: function (data) {
+            success: function(data) {
                 $("#account-dropdown").html("");
                 $("#account-dropdown").html(data);
             },
@@ -134,14 +190,27 @@
         });
 
     }
-    $('.dropdown').on('show.bs.dropdown', function (e) {
+
+    $('.dropdown').on('show.bs.dropdown', function(e) {
         $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
     });
 
     // ADD SLidEUP ANIMATION TO DROPDOWN //
-    $('.dropdown').on('hide.bs.dropdown', function (e) {
+    $('.dropdown').on('hide.bs.dropdown', function(e) {
         $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
     });
+
+    //modal success animation 
+    bootstrap_alert = function () { }
+    bootstrap_alert.warning = function (message, alert, timeout) {
+        $('<div id="floating_alert" class="alert alert-' + alert + ' fade in"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + message + '&nbsp;&nbsp;</div>').appendTo('body');
+
+
+        setTimeout(function () {
+            $(".alert").alert('close');
+        }, timeout);
+
+    }
 </script>
 
 </body>
