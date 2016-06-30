@@ -19,13 +19,13 @@ namespace ChemiSystems.Controllers
 {
     public class OrderController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext _db = new ApplicationDbContext();
 
         // Checkout
         // GET: Order
-        public ActionResult Index(Guid? id)
+        public ActionResult Index(Guid? orderId)
         {
-            var order = db.Orders.FirstOrDefault(a => a.Id == id);
+            var order = _db.Orders.FirstOrDefault(a => a.Id == orderId);
             if (order == null)
             {
                 return View("Error");
@@ -131,7 +131,7 @@ namespace ChemiSystems.Controllers
         //GET: Order/GetOrder
         public Guid? GetOrder(string jsonLocalStorageObj)
         {
-            var products = StorageHelper.GetProductsLocal(jsonLocalStorageObj, db);
+            var products = StorageHelper.GetProductsLocal(jsonLocalStorageObj, _db);
             var currentUserId = User.Identity.GetUserId();
             if (products == null)
             {
@@ -156,7 +156,9 @@ namespace ChemiSystems.Controllers
                 CreatedDate = p.Product.CreatedDate,
                 ChangedDate = p.Product.ChangedDate,
             }).ToList();
+
            
+
             Order order = new Order()
             {
                 CreatedDate = DateTime.Now,
@@ -165,13 +167,58 @@ namespace ChemiSystems.Controllers
                 DeliverToAddress = "",
                 OrderedBy = currentUserId,
                 ProductsInOrder = productsInOrder,
-                OrderStatus = new OrderStatus()
+                OrderStatus = _db.OrderStatuses.FirstOrDefault(a => a.Status.Equals("Waiting"))
             };
 
-            db.Orders.Add(order);
-            db.SaveChanges();
+            _db.Orders.Add(order);
+            _db.SaveChanges();
 
             return order.Id;
+        }
+
+        public void GenerateCategories()
+        {
+            //OrderStatus orderStatus1 = new OrderStatus()
+            //{
+            //    Status = "Waiting",
+            //    StatusColor = "btn btn-info",
+            //    StatusIcon = "fa fa-credit-card"
+            //};
+
+            //OrderStatus orderStatus2 = new OrderStatus()
+            //{
+            //    Status = "Processing",
+            //    StatusColor = "btn btn-warning",
+            //    StatusIcon = "fa fa-cogs"
+            //};
+
+            //OrderStatus orderStatus3 = new OrderStatus()
+            //{
+            //    Status = "Delivered",
+            //    StatusColor = "btn btn-success",
+            //    StatusIcon = "fa fa-check"
+            //};
+
+            //OrderStatus orderStatus4 = new OrderStatus()
+            //{
+            //    Status = "Cancelled",
+            //    StatusColor = "btn btn-danger",
+            //    StatusIcon = "fa fa-times"
+            //};
+
+            //OrderStatus orderStatus5 = new OrderStatus()
+            //{
+            //    Status = "Archived",
+            //    StatusColor = "btn btn-primary",
+            //    StatusIcon = "fa fa-archive"
+            //};
+
+            //_db.OrderStatuses.Add(orderStatus1);
+            //_db.OrderStatuses.Add(orderStatus2);
+            //_db.OrderStatuses.Add(orderStatus3);
+            //_db.OrderStatuses.Add(orderStatus4);
+            //_db.OrderStatuses.Add(orderStatus5);
+            //_db.SaveChanges();
         }
     }
 }

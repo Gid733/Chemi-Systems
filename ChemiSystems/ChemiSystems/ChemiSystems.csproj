@@ -363,7 +363,6 @@
     <Content Include="Views\AccountProfile\Orders.cshtml" />
     <Content Include="Views\AccountProfile\Settings.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
-    <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Catalogue\Product.cshtml" />
     <Content Include="Views\Account\_SignedInPartial.cshtml" />
     <Content Include="Views\AccountProfile\_ProfileLayout.cshtml" />

@@ -11,13 +11,6 @@ namespace ChemiSystems.Infrastructure.Entities
         public string Status { get; set; }
         public string StatusColor { get; set; }
         public string StatusIcon { get; set; }
-        public ICollection<Order> Orders { get; set; }
-
-        public OrderStatus()
-        {
-            Status = "Proceed";
-            StatusColor = "btn btn-success";
-            StatusIcon = "fa fa-credit-card";
-        }
+        public ICollection<Order> Orders { get; set; }       
     }
 }

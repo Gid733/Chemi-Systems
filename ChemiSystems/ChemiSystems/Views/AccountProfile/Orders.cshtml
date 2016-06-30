@@ -42,10 +42,18 @@
                                         <h5>@Html.ActionLink(p.Name, "Product", "Catalogue", new {vendorCode = p.VendorCode}, null) @p.Amount g</h5>
                                     }
                                 </div>
-                                <div class="col-md-3">
-                                    <button id="submit" onclick="location.href='@Url.Action("Messages", new {orderId = o.Id})'" name="submit" class="@o.OrderStatus.StatusColor" style="width: 160px;">
+                                <div class="col-md-3 text-center" style="margin-top: 10px; margin-bottom: 10px;">
+                                    <button id="submit" onclick="location.href = '@Url.Action("Messages", new {orderId = o.Id})'" name="submit" class="@o.OrderStatus.StatusColor" style="width: 160px;">
                                         @o.OrderStatus.Status <span class="@o.OrderStatus.StatusIcon" aria-hidden="true"></span>
-                                    </button>                                    
+                                    </button>
+
+                                    @if (o.OrderStatus.Status.Equals("Waiting"))
+                                    {
+                                        <button id="submit" onclick="location.href='@Url.Action("Index", "Order", new {orderId = o.Id})'" name="submit" class="btn btn-primary btn-sm" style="width: 110px; margin-top: 5px;">
+                                           To checkout <span class="fa fa-credit-card-alt" aria-hidden="true"></span>
+                                        </button>
+                                    }
+                                    
                                 </div>
                             </div>
                         </div>

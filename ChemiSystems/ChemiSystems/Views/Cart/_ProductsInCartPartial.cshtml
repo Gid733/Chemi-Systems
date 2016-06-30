@@ -181,7 +181,7 @@
             data: { jsonLocalStorageObj: jsonLocalStorageObj },
             success: function (result) {
                 store.clear();
-                window.location.href = "/Order/Index?id=" + result;
+                window.location.href = "/Order/Index?orderId=" + result;
             }
         });
     }
