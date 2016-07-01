@@ -28,6 +28,15 @@ namespace ChemiSystems.Controllers
                 .Include("OrderStatus")               
                 .Where(a => a.OrderedBy == currentUser && !a.OrderStatus.Status.Equals("Deleted")).ToList();
 
+            //calc order price
+            foreach (var o in userOrders)
+            {
+                foreach (var p in o.ProductsInOrder)
+                {
+                    o.TotalPrice += p.Price*p.Amount;
+                }
+            }
+
             return View(userOrders);
         }
 

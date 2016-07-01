@@ -9,12 +9,14 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-9 col-sm-9 col-xs-9">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
                                 <h4 style="margin-top: 0px; margin-bottom: 5px;">Active order</h4>
                             </div>
-
                             <div class="col-md-3 col-sm-3 col-xs-3">
-                                <h4 style="margin-top: 0px; margin-bottom: 5px;">State</h4>
+                                <h4 class="text-center" style="margin-top: 0px; margin-bottom: 5px;">Total</h4>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <h4 class="text-center" style="margin-top: 0px; margin-bottom: 5px;">State</h4>
                             </div>
                         </div>
                     </div>
@@ -35,12 +37,15 @@
                                         </div>
                                     }
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <h4>Order #@o.Id</h4>
                                     @foreach (var p in o.ProductsInOrder)
                                     {
                                         <h5>@Html.ActionLink(p.Name, "Product", "Catalogue", new {vendorCode = p.VendorCode}, null) @p.Amount g</h5>
                                     }
+                                </div>
+                                <div class="col-md-2">
+                                    <h3 class="text-center">@o.TotalPrice $</h3>
                                 </div>
                                 <div class="col-md-3 text-center" style="margin-top: 10px; margin-bottom: 10px;">
                                     <button id="submit" onclick="location.href = '@Url.Action("Messages", new {orderId = o.Id})'" name="submit" class="@o.OrderStatus.StatusColor" style="width: 160px;">
