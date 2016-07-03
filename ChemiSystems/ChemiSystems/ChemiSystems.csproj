@@ -258,6 +258,10 @@
     <Compile Include="Migrations\201606292146290_Feedback.Designer.cs">
       <DependentUpon>201606292146290_Feedback.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607011353201_PaymentTransaction.cs" />
+    <Compile Include="Migrations\201607011353201_PaymentTransaction.Designer.cs">
+      <DependentUpon>201607011353201_PaymentTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GetProductsModel.cs" />
@@ -372,6 +376,8 @@
     <Content Include="Views\Cart\_ProductsInCartPartial.cshtml" />
     <Content Include="Views\Cart\_EmptyCartPartial.cshtml" />
     <Content Include="Views\Order\Checkout.cshtml" />
+    <Content Include="Views\Order\PaymentSuccess.cshtml" />
+    <Content Include="Views\Order\_LiqPayPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -395,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606292146290_Feedback.resx">
       <DependentUpon>201606292146290_Feedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607011353201_PaymentTransaction.resx">
+      <DependentUpon>201607011353201_PaymentTransaction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

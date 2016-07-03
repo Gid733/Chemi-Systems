@@ -22,7 +22,7 @@ namespace ChemiSystems.Models.Payment
         {
             ApiUrl = "https://www.liqpay.com/api/";
             CheckpointUrl = "https://www.liqpay.com/api/3/checkout";
-            Currency = "UAH";
+            Currency = "USD";
             Version = 3;
             @Action = "pay";
             PublicKey = "i50329699087";

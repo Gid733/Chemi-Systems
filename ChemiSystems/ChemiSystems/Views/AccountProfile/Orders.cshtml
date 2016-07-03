@@ -52,7 +52,7 @@
                                         @o.OrderStatus.Status <span class="@o.OrderStatus.StatusIcon" aria-hidden="true"></span>
                                     </button>
 
-                                    @if (o.OrderStatus.Status.Equals("Waiting"))
+                                    @if (o.OrderStatus.Status.Equals("Pending"))
                                     {
                                         <button id="submit" onclick="location.href='@Url.Action("Index", "Order", new {orderId = o.Id})'" name="submit" class="btn btn-primary btn-sm" style="width: 110px; margin-top: 5px;">
                                            To checkout <span class="fa fa-credit-card-alt" aria-hidden="true"></span>

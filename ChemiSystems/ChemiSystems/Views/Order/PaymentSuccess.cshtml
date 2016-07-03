@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "PaymentSuccess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Оплата проведена успешно, вы будете перемещены на главную страницу...</h2>
+<script type="text/javascript">
+        setTimeout ( function(){
+                             window.location.href = "/Index#";},
+                             4500 );
+</script>
+

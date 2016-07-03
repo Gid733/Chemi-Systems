@@ -42,6 +42,8 @@ namespace ChemiSystems.Models
         public DbSet<OrderStatus> OrderStatuses { get; set; }
         public DbSet<OrderMessage> OrderMessages { get; set; } 
 
+        public DbSet<PaymentTransaction> PaymentTransactions { get; set; }
+
         public DbSet<Feedback> Feedbacks { get; set; }
 
         public static ApplicationDbContext Create()
