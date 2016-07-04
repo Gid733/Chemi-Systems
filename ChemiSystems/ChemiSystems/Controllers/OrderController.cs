@@ -41,13 +41,21 @@ namespace ChemiSystems.Controllers
         {
             
             //get order by id
-            var order = _db.Orders.FirstOrDefault(a => a.Id == orderId);
+            var order = _db.Orders.Include("ProductsInOrder").FirstOrDefault(a => a.Id == orderId);
 
-            //If order not found - return error
             if (order == null)
             {
                 return View("Error");
             }
+
+            foreach (var p in order.ProductsInOrder)
+                {
+                    order.TotalPrice += p.Price * p.Amount;
+                }
+            
+
+            //If order not found - return error
+            
 
             // Get current user
             var user = System.Web.HttpContext.Current.GetOwinContext()

@@ -66,16 +66,18 @@
                     <div class="panel-body">
 
                         <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
-                        <div style='overflow:hidden;height:400px;width:100%;'>
-                            <div id='gmap_canvas' style='height:400px;width:100%;'></div>
+                        <div style='overflow: hidden; height: 400px; width: 100%;'>
+                            <div id='gmap_canvas' style='height: 400px; width: 100%;'></div>
                             <style>
                                 #gmap_canvas img {
                                     max-width: none !important;
                                     background: none !important;
                                 }
                             </style>
-                        </div> <a href='http://maps-generator.com/ru' >http://Maps-Generator.com/ru</a>
-                        <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=f363fc788bbe58d9f737756a0f45085361cf059d'></script>
+                        </div>
+                        <script async defer
+                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACCN998JIxpRTe-ztW3BR4WUioyMem8ac&callback=initMap">
+                        </script>
                         <script type='text/javascript'>
                                     function init_map() {
                                         var myOptions = {
@@ -97,6 +99,7 @@
                                         infowindow.open(map, marker);
                                     }
                                     google.maps.event.addDomListener(window, 'load', init_map);
+                            //AIzaSyACCN998JIxpRTe-ztW3BR4WUioyMem8ac
                         </script>
                     </div>
                 </div>

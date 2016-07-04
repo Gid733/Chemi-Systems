@@ -6,9 +6,13 @@
 }
 <form role="form" action="https://www.liqpay.com/api/3/checkout"
       accept-charset="utf-8">
-    <h3 class="text-center">You are accepting order payment for @Model.Amount $</h3>       
-    <input type="hidden" name="data" value="@ViewBag.data" />
-    <input type="hidden" name="signature" value="@ViewBag.signature" />
-    <input type="image"
-           src="//static.liqpay.com/buttons/p1ru.radius.png" />
+    <div class="col-md-9">
+        <h3 class="text-center">You are accepting order payment for @Model.Amount $</h3>
+        <input type="hidden" name="data" value="@ViewBag.data" />
+        <input type="hidden" name="signature" value="@ViewBag.signature" />
+    </div>
+    <div class="col-md-3">
+        <input type="image"
+               src="//static.liqpay.com/buttons/p1ru.radius.png" />
+    </div>      
 </form>

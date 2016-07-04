@@ -124,20 +124,25 @@
                 <section class="tab-pane" id="tab2">
                     <div class="panel-body">
                         <div class="row">
-                            @Html.Action("Checkout", new { orderId = Model.Id })
+                            <div id="payment-partial">
+                                
+                            </div>
                         </div>
                     </div>
                 </section>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 pull-right">
-                <div class="panel panel-default" style="border-top: none;">
-                    <div class="panel-body text-center">
-                        <button class="btn btn-primary btn-large" type="button" id="btnLogin" class="btn">Checkout</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>       
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            url: '/Order/Checkout',
+            data: { orderId: "@Model.Id" },
+            type: 'POST',
+            success: function (data) {
+                $("#payment-partial").html(data);
+            }
+        });        
+    });
+</script>
