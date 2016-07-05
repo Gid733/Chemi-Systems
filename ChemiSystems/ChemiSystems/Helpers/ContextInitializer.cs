@@ -62,7 +62,9 @@ namespace ChemiSystems.Helpers
                                        "Melting Point: 169 deg.C(336.20F) " +            ",\n" +
                                        "Specific Gravity: 1.44(water = 1) " +            ",\n" +
                                        "Solubility in water: 4.9g / 100g @ 20C " + ",\n" +
-                                       "pH: 3.6 - 4(4 % aq.soln)",                        
+                                       "pH: 3.6 - 4(4 % aq.soln)",
+                DescriptionShort = "Boric acid is a weak, monobasic Lewis acid of boron often used as an antiseptic, insecticide, " +
+                                   "flame retardant, neutron absorber, or precursor to other chemical compounds.",
                 Price = 0.01,           
                 ProductCategory = category1,
                 ProductImage = image11  
@@ -91,7 +93,8 @@ namespace ChemiSystems.Helpers
                                        "Molar mass: 60.05 g mol?1 " +    ",\n" +
                                        "Density: 1.049g / cm3 " +        ",\n" +
                                        "Melting Point: 16.5 oC " + ",\n" +
-                                       "Boiling point: 118.1 oC ",        
+                                       "Boiling point: 118.1 oC ",
+                DescriptionShort = "Acetic acid, CH3COOH, also known as ethanoic acid, is an organic acid,with a pungent smell.",
                 Price = 0.02,                                             
                 ProductCategory = category1,                              
                 ProductImage = image12  
@@ -112,7 +115,7 @@ namespace ChemiSystems.Helpers
                 CreatedDate = DateTime.Now,
                 Name = "Acetic Acid 80%",
                 VendorCode = "AA30",
-                DescriptionMain = "Acetic acid, CH3COOH, also known as ethanoic acid, is an organic acid,with a pungent smell. It is a weak acid, in that it is only partially dissociated in an aqueous solution. " +
+                DescriptionMain = "Acetic acid, CH3COOH, also known as ethanoic acid, is an organic acid, with a pungent smell. It is a weak acid, in that it is only partially dissociated in an aqueous solution. " +
                                   "Acetic acid is one of the simplest carboxylic acids, and is a very important industrial chemical.",
                 DescriptionSecondary = "CAS No.: 64-19-7 " +                              ",\n" +
                                        "EC No: 200 - 580 - 7 " +                          ",\n" +
@@ -121,7 +124,8 @@ namespace ChemiSystems.Helpers
                                        "Molar mass: 60.05 g mol-1 " +                     ",\n" +
                                        "Density: 1.049g / cm3 " +                         ",\n" +
                                        "Melting Point: 16.5 oC "+ ",\n" +
-                                       "Boiling point: 118.1 oC ",                         
+                                       "Boiling point: 118.1 oC ",
+                DescriptionShort = "Acetic acid, CH3COOH, also known as ethanoic acid, is an organic acid,with a pungent smell.",
                 Price = 0.03,                                                              
                 ProductCategory = category1,
                 ProductImage = image13  
@@ -156,6 +160,7 @@ namespace ChemiSystems.Helpers
                                        "Arsenic(As): 0.0001 % " +                                                ",\n" +
                                        "Ignition Residue: 0.08 % " + "\n" +
                                        "Oxide(based on Cl): 0.005 %",
+                DescriptionShort = "Hydrochloric acid is a clear, colorless, highly pungent solution of hydrogen chloride (HCl) in water.",
                 Price = 0.04,
                 ProductCategory = category2,
                 ProductImage = image21
@@ -190,6 +195,7 @@ namespace ChemiSystems.Helpers
                                        "Arsenic(As): 0.0001 % " +                                               ",\n" +
                                        "Ignition Residue: 0.08 % "                                              + ",\n" +
                                        "Oxide(based on Cl): 0.005 %",
+                DescriptionShort = "Hydrochloric acid is a clear, colorless, highly pungent solution of hydrogen chloride (HCl) in water.",
                 Price = 0.01,           
                 ProductCategory = category2,
                 ProductImage = image22
@@ -224,6 +230,7 @@ namespace ChemiSystems.Helpers
                                        "Arsenic(As): 0.0001 % " +                                                 ",\n" +
                                        "Ignition Residue: 0.08 % " +                                              ",\n" +
                                        "Oxide(based on Cl): 0.004 %",
+                DescriptionShort = "Hydrochloric acid is a clear, colorless, highly pungent solution of hydrogen chloride (HCl) in water.",
                 Price = 0.02,
                 ProductCategory = category2,
                 ProductImage = image23

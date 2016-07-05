@@ -8,7 +8,8 @@ namespace ChemiSystems.Infrastructure.Entities
         public string Name { get; set; }
         public string VendorCode { get; set; }
         public string DescriptionMain { get; set; }
-        public string DescriptionSecondary { get; set; }        
+        public string DescriptionSecondary { get; set; }
+        public string DescriptionShort { get; set; }
         public double Price { get; set; }
 
         public Guid ProductImageId { get; set; }

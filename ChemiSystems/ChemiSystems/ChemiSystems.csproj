@@ -266,6 +266,10 @@
     <Compile Include="Migrations\201607051205049_CategoryIcon.Designer.cs">
       <DependentUpon>201607051205049_CategoryIcon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607052148296_DescriptionShort.cs" />
+    <Compile Include="Migrations\201607052148296_DescriptionShort.Designer.cs">
+      <DependentUpon>201607052148296_DescriptionShort.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GetProductsModel.cs" />
@@ -419,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607051205049_CategoryIcon.resx">
       <DependentUpon>201607051205049_CategoryIcon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607052148296_DescriptionShort.resx">
+      <DependentUpon>201607052148296_DescriptionShort.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
