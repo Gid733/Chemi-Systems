@@ -90,15 +90,31 @@
             </div>
         </div>
     </section>
-    <div class="row">
-        <div class="col-md-2 pull-right">
-            <div class="panel panel-default" style="border-top: none;">
-                <div class="panel-body text-center">
-                    <button class="btn btn-primary btn-large" type="button" id="btnCheckout" onclick="proceedToCheckout()">Checkout</button>
+    @if (Request.IsAuthenticated)
+    {
+        <div class="row">
+            <div class="col-md-2 pull-right">
+                <div class="panel panel-default" style="border-top: none;">
+                    <div class="panel-body text-center">
+                        <button class="btn btn-primary btn-large" type="button" id="btnCheckout" onclick="proceedToCheckout()">Checkout</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-3 pull-right">
+                <div class="panel panel-default" style="border-top: none;">
+                    <div class="panel-body text-center">
+                        @Html.ActionLink("Register to proceed", "Register", "Account", new {}, new {@class= "btn btn-success btn-large" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    
 </div>
 
 <script>

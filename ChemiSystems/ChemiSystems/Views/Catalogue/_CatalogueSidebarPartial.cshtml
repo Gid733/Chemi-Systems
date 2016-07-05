@@ -5,7 +5,7 @@
     <ul class="nav nav-stacked" id="sidebar">
         @foreach (var m in Model)
         {
-            <li><a href="#" id="@m.Id" class="current-category">@m.Name<span class="fa fa-flask pull-right" aria-hidden="true"></span></a></li>
+            <li><a href="#" id="@m.Id" class="current-category">@m.Name<span class="fa @m.CategoryIcon pull-right" aria-hidden="true"></span></a></li>
         }
     </ul>
 </nav>

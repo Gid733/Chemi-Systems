@@ -139,6 +139,13 @@ namespace ChemiSystems.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            //check if user signed up
+            string currentUserId = User.Identity.GetUserId();
+            if (currentUserId != null)
+            {
+                return View("Error");
+            }
+
             return View();
         }
 
@@ -149,6 +156,13 @@ namespace ChemiSystems.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            //check if user signed up
+            string currentUserId = User.Identity.GetUserId();
+            if (currentUserId != null)
+            {
+                return View("Error");
+            }
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser {

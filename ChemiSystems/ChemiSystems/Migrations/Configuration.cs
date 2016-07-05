@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using ChemiSystems.Infrastructure.Entities;
+
 namespace ChemiSystems.Migrations
 {
     using System;
@@ -14,7 +17,7 @@ namespace ChemiSystems.Migrations
         }
 
         protected override void Seed(ChemiSystems.Models.ApplicationDbContext context)
-        {
+        {            
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

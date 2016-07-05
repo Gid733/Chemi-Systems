@@ -104,7 +104,7 @@ namespace ChemiSystems.Controllers
             var json = "{ \"version\" : 3,\"public_key\" : \"" + model.PublicKey
                        + "\", \"action\" : \"pay\", \"amount\" : " + model.Amount
                        + ", \"server_url\" : \"" + model.ServerUrl
-                       + "\", \"currency\" : \"UAH\",\"description\" : \"" + model.Description + "\",\"" +
+                       + "\", \"currency\" : \"USD\",\"description\" : \"" + model.Description + "\",\"" +
                        "+order_id\" : \"" + model.OrderId + "\"}";
 
             // Create DATA
@@ -192,51 +192,6 @@ namespace ChemiSystems.Controllers
             _db.SaveChanges();
 
             return order.Id;
-        }
-
-        public void GenerateCategories()
-        {
-            //OrderStatus orderStatus1 = new OrderStatus()
-            //{
-            //    Status = "Pending",
-            //    StatusColor = "btn btn-info",
-            //    StatusIcon = "fa fa-credit-card"
-            //};
-
-            //OrderStatus orderStatus2 = new OrderStatus()
-            //{
-            //    Status = "Processing",
-            //    StatusColor = "btn btn-warning",
-            //    StatusIcon = "fa fa-cogs"
-            //};
-
-            //OrderStatus orderStatus3 = new OrderStatus()
-            //{
-            //    Status = "Delivered",
-            //    StatusColor = "btn btn-success",
-            //    StatusIcon = "fa fa-check"
-            //};
-
-            //OrderStatus orderStatus4 = new OrderStatus()
-            //{
-            //    Status = "Cancelled",
-            //    StatusColor = "btn btn-danger",
-            //    StatusIcon = "fa fa-times"
-            //};
-
-            //OrderStatus orderStatus5 = new OrderStatus()
-            //{
-            //    Status = "Archived",
-            //    StatusColor = "btn btn-primary",
-            //    StatusIcon = "fa fa-archive"
-            //};
-
-            //_db.OrderStatuses.Add(orderStatus1);
-            //_db.OrderStatuses.Add(orderStatus2);
-            //_db.OrderStatuses.Add(orderStatus3);
-            //_db.OrderStatuses.Add(orderStatus4);
-            //_db.OrderStatuses.Add(orderStatus5);
-            //_db.SaveChanges();
-        }
+        }        
     }
 }

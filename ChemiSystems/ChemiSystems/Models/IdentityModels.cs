@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using ChemiSystems.Helpers;
 using ChemiSystems.Infrastructure.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -28,6 +29,11 @@ namespace ChemiSystems.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        static ApplicationDbContext()
+        {
+            Database.SetInitializer(new ContextInitializer());
+        }
+
         public ApplicationDbContext()
             : base("ChemiDb", throwIfV1Schema: false)
         {

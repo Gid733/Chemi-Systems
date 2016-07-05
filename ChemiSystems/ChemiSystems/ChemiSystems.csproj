@@ -223,7 +223,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Helpers\PaginHelpers.cs" />
+    <Compile Include="Helpers\ContextInitializer.cs" />
     <Compile Include="Helpers\StorageHelper.cs" />
     <Compile Include="Infrastructure\Base\BaseEntity.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -262,6 +262,10 @@
     <Compile Include="Migrations\201607011353201_PaymentTransaction.Designer.cs">
       <DependentUpon>201607011353201_PaymentTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607051205049_CategoryIcon.cs" />
+    <Compile Include="Migrations\201607051205049_CategoryIcon.Designer.cs">
+      <DependentUpon>201607051205049_CategoryIcon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GetProductsModel.cs" />
@@ -283,6 +287,9 @@
     <Content Include="Content\css\font-awesome-min.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\acetic-acid\acetic-acid.png" />
+    <Content Include="Content\img\acetic-acid\formula.png" />
+    <Content Include="Content\img\acetic-acid\molecular.png" />
     <Content Include="Content\img\ajax-loader.gif" />
     <Content Include="Content\img\background.jpg" />
     <Content Include="Content\img\bootstrap-formhelpers-googlefonts.png" />
@@ -295,6 +302,7 @@
     <Content Include="Content\img\checkout-logos\mc.png" />
     <Content Include="Content\img\checkout-logos\p24.png" />
     <Content Include="Content\img\checkout-logos\vs.png" />
+    <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\hydrochloric-acid\formula.png" />
     <Content Include="Content\img\hydrochloric-acid\hydrochloric-acid.jpg" />
     <Content Include="Content\img\hydrochloric-acid\molecular.jpg" />
@@ -384,6 +392,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\nitric-acid\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -407,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607011353201_PaymentTransaction.resx">
       <DependentUpon>201607011353201_PaymentTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607051205049_CategoryIcon.resx">
+      <DependentUpon>201607051205049_CategoryIcon.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
