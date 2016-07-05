@@ -1,0 +1,18 @@
+namespace ChemiSystems.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class OrderNumber : DbMigration
+    {
+        public override void Up()
+        {
+            AddColumn("dbo.Orders", "OrderNumber", c => c.Int(nullable: false, identity: true));
+        }
+        
+        public override void Down()
+        {
+            DropColumn("dbo.Orders", "OrderNumber");
+        }
+    }
+}

@@ -64,7 +64,7 @@ namespace ChemiSystems.Controllers
             
             LiqPayModel model = new LiqPayModel()
             {            
-                Description = "Order payment: #" + order.Id,
+                Description = "Order payment: #" + order.OrderNumber,
                 Amount = Convert.ToDecimal(order.TotalPrice),
                 OrderId = order.Id.ToString(),           
                 //ServerUrl = /Order/PaymentStatusChanged
@@ -98,7 +98,7 @@ namespace ChemiSystems.Controllers
             model.ServerUrl = HttpContext.Request.Url?.Scheme + "://" + HttpContext.Request.Url?.Host +
                               "/Order/Checkout";
             model.OrderId = orderHashString;
-            model.Description = "Checkout for user order:" + user.FirstName + " " + user.LastName;
+            model.Description = "Checkout for user order #" + order.OrderNumber + " " + user.FirstName + " " + user.LastName;
 
             // Prepare JSON string
             var json = "{ \"version\" : 3,\"public_key\" : \"" + model.PublicKey

@@ -63,8 +63,8 @@ namespace ChemiSystems.Helpers
                                        "Specific Gravity: 1.44(water = 1) " +            ",\n" +
                                        "Solubility in water: 4.9g / 100g @ 20C " + ",\n" +
                                        "pH: 3.6 - 4(4 % aq.soln)",
-                DescriptionShort = "Boric acid is a weak, monobasic Lewis acid of boron often used as an antiseptic, insecticide, " +
-                                   "flame retardant, neutron absorber, or precursor to other chemical compounds.",
+                DescriptionShort = "Boric acid is a weak, monobasic Lewis acid of boron often used as an antiseptic, " +
+                                   "or precursor to other chemical compounds.",
                 Price = 0.01,           
                 ProductCategory = category1,
                 ProductImage = image11  

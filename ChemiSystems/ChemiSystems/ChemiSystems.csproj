@@ -270,6 +270,10 @@
     <Compile Include="Migrations\201607052148296_DescriptionShort.Designer.cs">
       <DependentUpon>201607052148296_DescriptionShort.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607052302124_OrderNumber.cs" />
+    <Compile Include="Migrations\201607052302124_OrderNumber.Designer.cs">
+      <DependentUpon>201607052302124_OrderNumber.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GetProductsModel.cs" />
@@ -426,6 +430,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607052148296_DescriptionShort.resx">
       <DependentUpon>201607052148296_DescriptionShort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607052302124_OrderNumber.resx">
+      <DependentUpon>201607052302124_OrderNumber.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
