@@ -309,6 +309,7 @@
     <Content Include="Content\img\checkout-logos\lp.png" />
     <Content Include="Content\img\checkout-logos\mc.png" />
     <Content Include="Content\img\checkout-logos\p24.png" />
+    <Content Include="Content\img\checkout-logos\payment-logo.png" />
     <Content Include="Content\img\checkout-logos\vs.png" />
     <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\hydrochloric-acid\formula.png" />

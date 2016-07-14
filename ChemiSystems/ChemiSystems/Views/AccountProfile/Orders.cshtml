@@ -9,13 +9,13 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="col-md-7 col-sm-6 col-xs-6">
                                 <h4 style="margin-top: 0px; margin-bottom: 5px;">Active order</h4>
                             </div>
-                            <div class="col-md-3 col-sm-3 col-xs-3">
+                            <div class="col-md-2 col-sm-2 col-xs-3">
                                 <h4 class="text-center" style="margin-top: 0px; margin-bottom: 5px;">Total</h4>
                             </div>
-                            <div class="col-md-3 col-sm-3 col-xs-3">
+                            <div class="col-md-3 col-sm-4 col-xs-4">
                                 <h4 class="text-center" style="margin-top: 0px; margin-bottom: 5px;">State</h4>
                             </div>
                         </div>
@@ -27,27 +27,27 @@
                     {
                         <div class="panel panel-default">
                             <div class="row account-wrapper">
-                                <div class="col-md-3">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
                                     @foreach (var p in o.ProductsInOrder)
                                     {
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
                                             <div class="panel-body" style="margin: 0px; padding: 0px; margin-top: 10px">
                                                 <img src="@Url.Content(p.ProductImage.ImageMain)" class="img-responsive" width="100">
                                             </div>
                                         </div>
                                     }
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-sm-9 col-xs-9">
                                     <h4>Order #@o.OrderNumber</h4>
                                     @foreach (var p in o.ProductsInOrder)
                                     {
                                         <h5>@Html.ActionLink(p.Name, "Product", "Catalogue", new {vendorCode = p.VendorCode}, null) @p.Amount g</h5>
                                     }
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2 сol-sm-5 col-xs-5">
                                     <h3 class="text-center">@o.TotalPrice $</h3>
                                 </div>
-                                <div class="col-md-3 text-center" style="margin-top: 10px; margin-bottom: 10px;">
+                                <div class="col-md-3 col-sm-7 col-xs-7 text-center" style="margin-top: 10px; margin-bottom: 10px;">
                                     <button id="submit" onclick="location.href = '@Url.Action("Messages", new {orderId = o.Id})'" name="submit" class="@o.OrderStatus.StatusColor" style="width: 160px;">
                                         @o.OrderStatus.Status <span class="@o.OrderStatus.StatusIcon" aria-hidden="true"></span>
                                     </button>
@@ -75,7 +75,7 @@
                                 <h4 style="margin-top: 0px; margin-bottom: 5px;">Order history</h4>
                             </div>
 
-                            <div class="col-md-3 col-sm-3 col-xs-3">
+                            <div class="col-md-3 col-sm-0 col-xs-0">
                                 <h4 style="margin-top: 0px; margin-bottom: 5px;">State</h4>
                             </div>
                         </div>
@@ -90,17 +90,17 @@
                                 <button id="submit" name="submit" onclick="location.href='@Url.Action("DeleteOrder", new { orderId = @o.Id })'" class="btn btn-danger btn-sm btn-account-trash" style="">                                   
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 </button>
-                                <div class="col-md-3">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
                                     @foreach (var p in o.ProductsInOrder)
                                     {
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
                                             <div class="panel-body order-img-wrapper">
                                                 <img src="@Url.Content(p.ProductImage.ImageMain)" class="img-responsive" width="100">
                                             </div>
                                         </div>
                                     }
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 col-sm-9 col-xs-9">
                                     <h4>Order #@o.OrderNumber</h4>
                                     @foreach (var p in o.ProductsInOrder)
                                     {
@@ -108,10 +108,10 @@
                                     }
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="col-md-4">
-                                        <h3 style="margin-top: 8px;">500$</h3>
+                                    <div class="col-md-4 сol-sm-6 col-xs-6">
+                                        <h3 style="margin-top: 8px;">@o.TotalPrice $</h3>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-8 col-sm-6 col-xs-6 ">
                                         <button id="submit" name="submit" class="@o.OrderStatus.StatusColor">
                                             <span class="@o.OrderStatus.StatusIcon" aria-hidden="true"></span>
                                         </button>

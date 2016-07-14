@@ -106,7 +106,7 @@ namespace ChemiSystems.Controllers
             //check if user have that order
             var currentUser = GetUserData();
             var userOrder = _db.Orders.FirstOrDefault(a => a.OrderedBy.Equals(currentUser.Id));
-            if (userOrder == null)
+            if (userOrder == null || messageContent == "")
             {
                 return View("Error");
             }

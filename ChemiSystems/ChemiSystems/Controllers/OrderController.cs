@@ -48,11 +48,14 @@ namespace ChemiSystems.Controllers
                 return View("Error");
             }
 
-            foreach (var p in order.ProductsInOrder)
-                {
-                    order.TotalPrice += p.Price * p.Amount;
-                }
-            
+            //calculate orderprice
+            double totalOrderPrice = 0;
+            foreach (var o in order.ProductsInOrder)
+            {
+                totalOrderPrice += o.Price*o.Amount;
+            }
+             
+
 
             //If order not found - return error
             
@@ -65,7 +68,7 @@ namespace ChemiSystems.Controllers
             LiqPayModel model = new LiqPayModel()
             {            
                 Description = "Order payment: #" + order.OrderNumber,
-                Amount = Convert.ToDecimal(order.TotalPrice),
+                Amount = Convert.ToDecimal(totalOrderPrice),
                 OrderId = order.Id.ToString(),           
                 //ServerUrl = /Order/PaymentStatusChanged
              };

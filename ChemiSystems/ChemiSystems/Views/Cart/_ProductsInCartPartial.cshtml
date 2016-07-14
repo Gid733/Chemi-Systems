@@ -45,22 +45,27 @@
                             <div id="product-price" value="@m.Product.Price">@m.Product.Price</div> $/g
                         </h3>
                     </div>
+
                     <div class="col-md-3 cart-wrapper">
-                        <div class="input-group input-btn-grp" style="width: 95%;">
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-primary btn-number" data-type="minus" data-field="quant[1]">
-                                    <span class="glyphicon glyphicon-minus"></span>
-                                </button>
-                            </span>
-                            <input id="quantity-input" type="text" name="quant[1]" class="form-control input-number" value="@m.Amount" min="1" max="999999" onchange="productChanged('@m.Product.Id', value)">
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </button>
-                            </span>
+                        <div class="col-md-11">
+                            <div class="input-group input-btn-grp pull-right" style="width: 95%;">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary btn-number" data-type="minus" data-field="quant[1]">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </button>
+                                </span>
+                                <input id="quantity-input" type="text" name="quant[1]" class="form-control input-number" value="@m.Amount" min="1" max="999999" onchange="productChanged('@m.Product.Id', value)">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </span>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-danger btn-xs" style="margin-left: 10px;" onclick="deleteProduct('@m.Product.Id')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                    </div>
+                        <div class="col-md-1">
+                            <button type="button" class="btn btn-danger btn-xs" onclick="deleteProduct('@m.Product.Id')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                        </div>
+                        </div>
                     <div class="col-md-2 cart-wrapper">
                         <h3 class="text-center">
                             @(m.Product.Price*m.Amount) $
