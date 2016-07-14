@@ -102,7 +102,7 @@ namespace ChemiSystems.Models
         public string Street { get; set; }
 
         [Required]
-        [Display(Name = "PhoneNumber")]
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
         [Required]
